@@ -37,10 +37,9 @@ int deviceAddress = 0;
 int I2CInit(int address)
 {
 	uint32_t timeout = (uint32_t)(TIMEOUT_MS * 1000);  /* timeout in us */
-	bool reset_on_timeout = false;
 	
     deviceAddress = address;
-	Wire.setWireTimeout(timeout, reset_on_timeout);
+	Wire.setTimeOut(timeout);
     Wire.begin();
 	
     return WE_SUCCESS;
