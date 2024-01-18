@@ -5,9 +5,6 @@
 static const uint8_t sda = 9;
 static const uint8_t sdl = 18;
 
-static const uint8_t SDA = 9;
-static const uint8_t SCL = 18;
-
 Sensor_ISDS sensor;
 int status;
 
