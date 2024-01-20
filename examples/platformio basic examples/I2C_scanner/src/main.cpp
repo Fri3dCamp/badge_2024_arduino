@@ -7,6 +7,9 @@
 // Devices with higher bit address might not be seen properly.
 //
 
+// Remark that the I2C connector on the Fri3dbadge is the Stemma QT / QWIIC
+// Remark that this looks the same as the SH1.0 connector on Wemos chips, but the wires are in the opposite order!
+
 #include <Wire.h>
 
 void setup()
