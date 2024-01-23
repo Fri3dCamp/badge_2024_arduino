@@ -11,7 +11,8 @@ void setup() {
   // Initialize the Serial (it'll tell us if the program runned correctly)
   Serial.begin(115200);
 
-  delay(1000);
+  delay(10000);
+
   Serial.println("init SPI...");
   //don't init for 2020 badge, keep SPI default pins:
   SPI.begin(7, 8, 6);
@@ -20,7 +21,7 @@ void setup() {
   delay(1000);
 
   // Check the module is connected
-  if (!SD.begin(CS_PIN, SPI, 20000000)) {
+  if (!SD.begin(CS_PIN, SPI, 40000000)) {
     Serial.println("Error, SD Initialization Failed");
     return;
   }
@@ -42,9 +43,11 @@ void setup() {
       l = readFile.readString();
     }
   } else {
-    Serial.println("Error, couldn't read main.cpp");
+    Serial.println("Error, couldn't read SDTest.txt");
   }
 }
 
 // Do nothing, sd card operations run on setup()
-void loop() {}
+void loop() {
+  delay(1000);
+}
