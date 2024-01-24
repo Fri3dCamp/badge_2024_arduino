@@ -13,7 +13,7 @@ void setup(void)
   Serial.println("Hello world - LovyanGFX - Hello World");
 
   tft.init();
-  tft.setRotation(5);
+  tft.setRotation(TFT_ROTATION);
   tft.setTextSize((std::max(tft.width(), tft.height()) + 255) >> 8);
   tft.fillScreen(TFT_BLACK);
   tft.drawRect(0, 0, tft.width(), tft.height(), TFT_BLUE);
