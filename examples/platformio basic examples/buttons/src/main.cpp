@@ -24,14 +24,14 @@ void setup()
 
 void checkButton(Button *b,const char *buttonname) {
 
-    b->read();               // read the button
+    b->read();
 
-    if (b->wasPressed())    // if the button was released, change the LED state
+    if (b->wasPressed())
     {
       Serial.print(buttonname);
       Serial.println(" pressed");
     }
-    if (b->wasReleased())    // if the button was released, change the LED state
+    if (b->wasReleased())
     {
       Serial.print(buttonname);
       Serial.println(" released");
