@@ -8,7 +8,11 @@ TFT_eSPI    tft = TFT_eSPI();
 
 void fri3d_sleep()
 {
+  // TODO dit is nog niet goed, want PWR AUX wordt weer opgezet bij het slapengaan
   esp_sleep_enable_ext1_wakeup(BUTTON_PIN_BITMASK, ESP_EXT1_WAKEUP_ANY_LOW);
+  pinMode(42,OUTPUT); // PWR AUX
+  digitalWrite(42,LOW);
+  delay(2000);
   esp_deep_sleep_start();
 }
 
