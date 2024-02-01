@@ -8,16 +8,21 @@ TFT_eSPI    tft = TFT_eSPI();
 
 void fri3d_sleep()
 {
-  // TODO dit is nog niet goed, want PWR AUX wordt weer opgezet bij het slapengaan
   esp_sleep_enable_ext1_wakeup(BUTTON_PIN_BITMASK, ESP_EXT1_WAKEUP_ANY_LOW);
   pinMode(42,OUTPUT); // PWR AUX
   digitalWrite(42,LOW);
-  delay(2000);
+  gpio_hold_en(GPIO_NUM_42);
+  gpio_deep_sleep_hold_en();
+  delay(100);
   esp_deep_sleep_start();
 }
 
 void setup()
 {
+  // PIN PWR AUX (42) was kept low during sleep, but after wake up it should return to its default state HIGH
+  gpio_hold_dis(GPIO_NUM_42);
+  gpio_deep_sleep_hold_dis();
+
   // put your setup code here, to run once:
   tft.init(TFT_BLACK);
   tft.setRotation(3);
