@@ -3,15 +3,17 @@
 
 TFT_eSPI    tft = TFT_eSPI();
 
+#define PIN_PWR_AUX GPIO_NUM_42
+
 // Pins 0-21 are RTC pins, others cannot be used. We'll use pin 0 (START button) to wake up
 #define BUTTON_PIN_BITMASK 0x000000001 // 2^0 in hex
 
 void fri3d_sleep()
 {
   esp_sleep_enable_ext1_wakeup(BUTTON_PIN_BITMASK, ESP_EXT1_WAKEUP_ANY_LOW);
-  pinMode(42,OUTPUT); // PWR AUX
-  digitalWrite(42,LOW);
-  gpio_hold_en(GPIO_NUM_42);
+  pinMode(PIN_PWR_AUX,OUTPUT); 
+  digitalWrite(PIN_PWR_AUX,LOW);
+  gpio_hold_en(PIN_PWR_AUX);
   gpio_deep_sleep_hold_en();
   delay(100);
   esp_deep_sleep_start();
@@ -20,7 +22,7 @@ void fri3d_sleep()
 void setup()
 {
   // PIN PWR AUX (42) was kept low during sleep, but after wake up it should return to its default state HIGH
-  gpio_hold_dis(GPIO_NUM_42);
+  gpio_hold_dis(PIN_PWR_AUX);
   gpio_deep_sleep_hold_dis();
 
   // put your setup code here, to run once:
