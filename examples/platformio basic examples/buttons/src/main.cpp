@@ -1,12 +1,13 @@
 #include <Arduino.h>
 #include <JC_Button.h>          // https://github.com/JChristensen/JC_Button
 
-Button button_A(39);
-Button button_B(40);
-Button button_X(38);
-Button button_Y(41);
-Button button_MENU(45);
-Button button_START(0);
+// Button(pin, debounceTime, pullUpEnable, invert) 
+Button button_A(39,25,true,true);
+Button button_B(40,25,true,true);
+Button button_X(38,25,true,true);
+Button button_Y(41,25,true,true);
+Button button_MENU(45,25,true,true);
+Button button_START(0,25,false,true); // GPIO0 has HW fixed pullup
 
 void setup()
 {  
