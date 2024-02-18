@@ -15,7 +15,8 @@ TFT_eSPI    tft = TFT_eSPI();
 void setup() {
   tft.init(TFT_BLACK);
   tft.initDMA();
-  tft.setRotation(3);
+  //setRotation is no longer necessary, as long as you define TFT_WIDTH and TFT_HEIGHT in platformio.ini
+  //tft.setRotation(3);
   tft.writecommand(TFT_MADCTL);
   tft.writedata(TFT_MAD_BGR | TFT_MAD_MV); //exchange red and blue bytes, and mirror x-coordinates
   //tft.fillScreen(TFT_BLACK);
