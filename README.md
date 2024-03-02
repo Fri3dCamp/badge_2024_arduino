@@ -21,7 +21,7 @@ The badge carries an ESP32-S3 chip, so we need to install support for the ESP32 
 * Under **Tools>Board>...** select **..>ESP32 Arduino>ESP32S3 Dev Module**
 * Under **Tools>USB CDC On Boot>...** select `Enabled` to enable the serial port
 * Under **Tools>Flash Size>...** select `16 MB`
-* Under **Tools>PSRAM>...** select `QSPI PSRAM`
+* Under **Tools>PSRAM>...** select `OPI PSRAM`
 
 * Connect the badge to your computer with a USB-C cable
 * Select the correct USB port under **Tools>Port** (on a Mac it's along the lines of `/dev/cu.usbserial-FFFFFFFF`)
