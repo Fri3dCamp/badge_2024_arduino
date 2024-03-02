@@ -1,3 +1,11 @@
+/* 
+ *  This example let the Fri3d badge 2024 act as a keyboard on USB (USB HID device keyboard)
+ *  When compiling in Arduino IDE, make sure to select Tools>USB Mode>USB-OTG (TinyUSB)
+ *  This example uses the Adafruit TinyUSB library that can be found in the Arduino IDE or
+ *    https://github.com/adafruit/Adafruit_TinyUSB_Arduino
+ *  Use Adafruit TinyUSB version 3.1.0 and ESP32 Arduino core 2.0.14
+*/ 
+
 #include <Arduino.h>
 #include "Adafruit_TinyUSB.h"
 
