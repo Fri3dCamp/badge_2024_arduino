@@ -1,29 +1,13 @@
 /*
- * IRremoteESP8266: IRrecvDumpV2 - dump details of IR codes with IRrecv
- * An IR detector/demodulator must be connected to the input kRecvPin.
+ * 
+ * This example dumps details of received IR codes.
+ * The example uses library IRremoteESP8266 which can be found in the Arduino IDE or on
+ *    https://github.com/crankyoldgit/IRremoteESP8266
  *
+ * Based on IRremoteESP8266: IRrecvDumpV2 
  * Copyright 2009 Ken Shirriff, http://arcfn.com
  * Copyright 2017-2019 David Conran
  *
- * Example circuit diagram:
- *  https://github.com/crankyoldgit/IRremoteESP8266/wiki#ir-receiving
- *
- * Changes:
- *   Version 1.2 October, 2020
- *     - Enable easy setting of the decoding tolerance value.
- *   Version 1.0 October, 2019
- *     - Internationalisation (i18n) support.
- *     - Stop displaying the legacy raw timing info.
- *   Version 0.5 June, 2019
- *     - Move A/C description to IRac.cpp.
- *   Version 0.4 July, 2018
- *     - Minor improvements and more A/C unit support.
- *   Version 0.3 November, 2017
- *     - Support for A/C decoding for some protocols.
- *   Version 0.2 April, 2017
- *     - Decode from a copy of the data so we can start capturing faster thus
- *       reduce the likelihood of miscaptures.
- * Based on Ken Shirriff's IrsendDemo Version 0.1 July, 2009,
  */
 
 #include <Arduino.h>
@@ -35,15 +19,8 @@
 #include <IRutils.h>
 
 // ==================== start of TUNEABLE PARAMETERS ====================
-// An IR detector/demodulator is connected to GPIO pin 14
-// e.g. D5 on a NodeMCU board.
-// Note: GPIO 16 won't work on the ESP8266 as it does not have interrupts.
-// Note: GPIO 14 won't work on the ESP32-C3 as it causes the board to reboot.
-#ifdef ARDUINO_ESP32C3_DEV
-const uint16_t kRecvPin = 10;  // 14 on a ESP32-C3 causes a boot loop.
-#else  // ARDUINO_ESP32C3_DEV
+// The integrated IR detector/demodulator is connected to GPIO pin 11
 const uint16_t kRecvPin = 11;
-#endif  // ARDUINO_ESP32C3_DEV
 
 // The Serial connection baud rate.
 // i.e. Status message will be sent to the PC at this baud rate.
@@ -134,11 +111,7 @@ decode_results results;  // Somewhere to store the results
 
 // This section of code runs only once at start-up.
 void setup() {
-#if defined(ESP8266)
-  Serial.begin(kBaudRate, SERIAL_8N1, SERIAL_TX_ONLY);
-#else  // ESP8266
   Serial.begin(kBaudRate);
-#endif  // ESP8266
   while (!Serial)  // Wait for the serial connection to be establised.
     delay(50);
   // Perform a low level sanity checks that the compiler performs bit field
