@@ -37,10 +37,9 @@ void setup() {
 
   File readFile = SD.open("/SDTest.txt", FILE_READ);
   if (readFile) {
-    String l = readFile.readString();
     while (readFile.available()) {
+      String l = readFile.readString();
       Serial.println(l);
-      l = readFile.readString();
     }
   } else {
     Serial.println("Error, couldn't read SDTest.txt");
