@@ -1,3 +1,9 @@
+/* 
+ * This example demonstrates how to blink the leds (ws2812) using the FastLED library
+ * This library can be found in the Arduino IDE or on https://github.com/FastLED/FastLED
+ * The version of the library should be minimal 3.5.0 !
+ */
+
 #include <FastLED.h>
 
 #define NEOPIXEL_PIN 12
