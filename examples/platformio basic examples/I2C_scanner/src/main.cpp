@@ -7,10 +7,15 @@
 // Devices with higher bit address might not be seen properly.
 //
 
-// Remark that the I2C connector on the Fri3dbadge is the Stemma QT / QWIIC
-// Remark that this looks the same as the SH1.0 connector on Wemos chips, but the wires are in the opposite order!
+// Remark that the I2C connector on the Fri3dbadge is the Stemma QT / QWIIC. This looks the same
+// as the SH1.0 connector on Wemos chips, but the wires are in the opposite order!
+
+// The program lists all i2c devices, on the Fri3d badge 2024 it should show 0x6B (accelero/gyro)
 
 #include <Wire.h>
+
+#define I2C_SDA 9
+#define I2C_SCL 18
 
 void setup()
 {
