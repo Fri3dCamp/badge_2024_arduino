@@ -13,8 +13,8 @@
 #include <TFT_eSPI.h>
 TFT_eSPI    tft = TFT_eSPI();
 
-#define JOYX 1
-#define JOYY 3
+#define PIN_JOY_X 1
+#define PIN_JOY_Y 3
 
 void setup()
 {
@@ -37,8 +37,8 @@ void loop()
   tft.drawWideLine(DWIDTH/2, DHEIGHT/2, prevx, prevy, 5, TFT_BLACK, TFT_BLACK);
   tft.fillCircle(prevx, prevy, 20, TFT_BLACK);
 
-  int newx = (analogRead(JOYX)) * DWIDTH / 4096;
-  int newy = DHEIGHT - (analogRead(JOYY)) * DHEIGHT / 4096;
+  int newx = (analogRead(PIN_JOY_X)) * DWIDTH / 4096;
+  int newy = DHEIGHT - (analogRead(PIN_JOY_Y)) * DHEIGHT / 4096;
   tft.drawWideLine(DWIDTH/2, DHEIGHT/2, newx, newy, 5, TFT_DARKGREY, TFT_BLACK);
   tft.fillCircle(newx, newy, 20, TFT_RED);
   delay(10);
