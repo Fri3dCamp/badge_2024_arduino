@@ -45,7 +45,7 @@ void loop() {
   Serial.print(bat_percent);
   Serial.println("%");
   tft.setCursor(10, 50);
-  tft.printf("bat_percent: %d%%", bat_percent);
+  tft.printf("bat_percent: %d%%  ", bat_percent);
 
   Serial.printf("Battery directly reading percent: %3d%%\n", Battery::read_percent());
 
