@@ -81,9 +81,9 @@
 //#define FILESYSTEM_BEGIN SPIClass spi = SPIClass(HSPI); spi.begin(14, 2, 15, 13); SD.begin(13, spi, 8000000, FSROOT); FS filesystem = SD;
 
 // enable audio
-#define HW_AUDIO_BUZZER
-#define HW_AUDIO_BUZZER_PIN 32
-#define HW_AUDIO_SAMPLERATE 22050 // nofrendo minimum sample rate
+// #define HW_AUDIO_BUZZER
+// #define HW_AUDIO_BUZZER_PIN 46
+// #define HW_AUDIO_SAMPLERATE 22050 // nofrendo minimum sample rate
 
 
 /* controller is GPIO */
@@ -91,15 +91,15 @@
 #define HW_CONTROLLER_GPIO
 #define HW_CONTROLLER_GPIO_ANALOG_JOYSTICK
 // #define HW_CONTROLLER_GPIO_REVERSE_UD
-#define HW_CONTROLLER_GPIO_UP_DOWN 34
+#define HW_CONTROLLER_GPIO_UP_DOWN 1
 #define HW_CONTROLLER_GPIO_REVERSE_LF
-#define HW_CONTROLLER_GPIO_LEFT_RIGHT 35
-#define HW_CONTROLLER_GPIO_SELECT 27
-#define HW_CONTROLLER_GPIO_START 13 // starts most games, such as PacMan and Chase
-#define HW_CONTROLLER_GPIO_A 14
-#define HW_CONTROLLER_GPIO_B 4
-#define HW_CONTROLLER_GPIO_X 27
-#define HW_CONTROLLER_GPIO_Y 26
+#define HW_CONTROLLER_GPIO_LEFT_RIGHT 3
+#define HW_CONTROLLER_GPIO_SELECT 42
+#define HW_CONTROLLER_GPIO_START 0 // starts most games, such as PacMan and Chase
+#define HW_CONTROLLER_GPIO_A 39
+#define HW_CONTROLLER_GPIO_B 40
+#define HW_CONTROLLER_GPIO_X 38
+#define HW_CONTROLLER_GPIO_Y 41
 
 /* controller is I2C M5Stack CardKB */
 // #define HW_CONTROLLER_I2C_M5CARDKB

@@ -57,9 +57,9 @@ Arduino_ST7789 *gfx = new Arduino_ST7789(bus, -1 /* RST */, 1 /* rotation */, tr
 // Arduino_ST7796 *gfx = new Arduino_ST7796(bus, 18, 1 /* rotation */);
 
 /* Fri3D Camp 2022 badge */
-#define TFT_BL 36 // unused?
-Arduino_DataBus *bus = new Arduino_ESP32SPI(33 /* DC */, 5 /* CS */, SCK, MOSI, MISO);
-Arduino_ST7789 *gfx = new Arduino_ST7789(bus, -1, 0 /* rotation */, true /* IPS */, 240 /* width */, 240 /* height */);
+// #define TFT_BL 36 // unused?
+Arduino_DataBus *bus = new Arduino_ESP32SPI(4 /* DC */, 5 /* CS */, 7 /* SCK*/, 6 /* MOSI*/, 8 /* MISO */);
+Arduino_ST7789 *gfx = new Arduino_ST7789(bus, 48 /* RST */, 1 /* rotation */, true /* IPS */, 240 /* width */, 296 /* height */);
 
 #endif /* custom hardware */
 
@@ -70,6 +70,7 @@ extern uint16_t myPalette[];
 extern void display_begin()
 {
     gfx->begin();
+    gfx->invertDisplay(true);
     bg_color = gfx->color565(24, 28, 24); // DARK DARK GREY
     gfx->fillScreen(bg_color);
 
