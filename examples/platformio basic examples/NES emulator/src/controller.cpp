@@ -78,12 +78,12 @@ extern "C" uint32_t controller_read_input()
 
 #else  /* !defined(ARDUINO_ODROID_ESP32) */
 
-  if (joyY > 2048 + 1024)
+  if (joyY > 2048 + 128)
   {
     u = 1;
     d = 0;
   }
-  else if (joyY < 1024)
+  else if (joyY < 128)
   {
     u = 0;
     d = 1;
@@ -94,12 +94,12 @@ extern "C" uint32_t controller_read_input()
     d = 1;
   }
 
-  if (joyX > 2048 + 1024)
+  if (joyX > 2048 + 128)
   {
     l = 1;
     r = 0;
   }
-  else if (joyX < 1024)
+  else if (joyX < 128)
   {
     l = 0;
     r = 1;

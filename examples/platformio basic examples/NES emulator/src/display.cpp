@@ -58,8 +58,8 @@ Arduino_ST7789 *gfx = new Arduino_ST7789(bus, -1 /* RST */, 1 /* rotation */, tr
 
 /* Fri3D Camp 2022 badge */
 // #define TFT_BL 36 // unused?
-Arduino_DataBus *bus = new Arduino_ESP32SPI(4 /* DC */, 5 /* CS */, 7 /* SCK*/, 6 /* MOSI*/, 8 /* MISO */);
-Arduino_ST7789 *gfx = new Arduino_ST7789(bus, 48 /* RST */, 1 /* rotation */, true /* IPS */, 240 /* width */, 296 /* height */);
+Arduino_DataBus *bus = new Arduino_ESP32SPIDMA(4 /* DC */, 5 /* CS */, 7 /* SCK*/, 6 /* MOSI*/, 8 /* MISO */);
+Arduino_ST7789 *gfx = new Arduino_ST7789(bus, 48 /* RST */, 4 /* rotation */, true /* IPS */, 296 /* width */, 240 /* height */);
 
 #endif /* custom hardware */
 
