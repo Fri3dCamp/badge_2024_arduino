@@ -182,7 +182,7 @@ void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  delay(3000);
+  // delay(3000);
   Serial.println("Fri3d Badge 2024 - Communicator test");
 
   setup_display();
