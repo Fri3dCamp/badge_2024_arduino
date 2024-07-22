@@ -187,9 +187,7 @@ void setup()
 
   setup_display();
   speaker_test();
-  delay(1000);
   mic_sprite_setup();
-  delay(1000);
   uart_sprite_setup();
 }
 
