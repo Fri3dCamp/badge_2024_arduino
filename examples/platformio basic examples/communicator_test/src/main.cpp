@@ -8,6 +8,15 @@
 #define SAMPLE_BUFFER_SIZE 512
 #define SAMPLE_RATE 8000
 
+#define I2S_MIC_CHANNEL I2S_CHANNEL_FMT_ONLY_LEFT
+
+#define I2S_MIC_SERIAL_CLOCK         17 // serial clock SCLK: pin SCK
+#define I2S_MIC_LEFT_RIGHT_CLOCK     47 // left/right clock LRCK: pin WS
+#define I2S_MIC_SERIAL_DATA          15 // serial data DIN: pin SD
+#define I2S_SPEAKER_SERIAL_CLOCK      2 // serial clock SCLK -> SCLK,BCLK
+#define I2S_SPEAKER_LEFT_RIGHT_CLOCK 47 // left/right clock LRCK -> WSEL,LRC
+#define I2S_SPEAKER_SERIAL_DATA      16 // serial data DOUT -> DIN
+
 // don't mess around with this
 i2s_config_t i2s_config = {
     .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX),
@@ -48,7 +57,7 @@ TFT_eSprite mic_sprite = TFT_eSprite(&tft);
 #define MIC_SPRITE_HEIGHT 100
 
 TFT_eSprite uart_sprite = TFT_eSprite(&tft);
-#define UART_SPRITE_WIDTH 220
+#define UART_SPRITE_WIDTH 260
 #define UART_SPRITE_HEIGHT 100
 
 #include "AudioFileSourcePROGMEM.h"
@@ -61,39 +70,36 @@ const char song[] PROGMEM =
 void uart_sprite_setup()
 {
   uart_sprite.createSprite(UART_SPRITE_WIDTH, UART_SPRITE_HEIGHT);
-  uart_sprite.setTextSize(2);
+  uart_sprite.setFreeFont(&FreeMono9pt7b);
+  uart_sprite.setTextSize(1);
   Serial2.begin(115200, SERIAL_8N1, PIN_EXPANSION_RX, PIN_EXPANSION_TX);
-  Serial2.flush();
+  Serial2.flush(false); // Flush TX & RX
 }
 
 void uart_sprite_update()
 {
   static int count = 0;
+  boolean updatesprite = false;
 
-  if (Serial2.available())
+  while (Serial2.available())
   {
     char ch = Serial2.read();
 
-    if (count % 30 == 0)
+    if (count % 40 == 0)
     {
       uart_sprite.fillSprite(TFT_BLACK);
       // uart_sprite.drawRect(0, 0, UART_SPRITE_WIDTH, UART_SPRITE_HEIGHT, TFT_WHITE);
       uart_sprite.setCursor(0, 10);
     }
 
-    if (isPrintable(ch) && (ch != ' '))
-    {
-      uart_sprite.print(' ');
-      uart_sprite.print(ch);
-      uart_sprite.print(' ');
-    }
-    else
-    {
-      uart_sprite.printf("%02X ", (unsigned char)ch);
-    }
+    uart_sprite.printf("%02X ", (unsigned char)ch);
 
-    uart_sprite.pushSprite(40, 140);
+    updatesprite = true;
     ++count;
+  }
+  if (updatesprite)
+  {
+    uart_sprite.pushSprite(20, 140);
   }
 }
 
