@@ -10,7 +10,7 @@ TLDR; To make this work you need the ESP32S3 Dev Module board and the FastLED Li
 
 ### Succesful upload command output example
 For reference here the output that you get for a succesful compilation and upload (on a mac)
-
+As you can see, the compilation gives a warning saying `"No hardware SPI pins defined.  All SPI access will default to bitbanged output"`, this warning can be ignored as far as I know.
 ```
 In file included from /Users/username/Documents/Arduino/libraries/FastLED/src/FastLED.h:79,
                  from /Users/username/gitProjects/PSNL/fri3d-badge_2024_arduino/examples/arduino basic examples/FastLED/TwinkleFox/TwinkleFox.ino:4:

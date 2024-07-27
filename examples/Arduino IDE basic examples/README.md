@@ -11,5 +11,4 @@ For the Fri3d badge to be usable in the Arduino IDE, you need to install version
 - connect your badge via usb to your computer
 - From the Tools Menu, select Port and select the entry that looks like it might be your badge.
 - Click the Upload Button (right pointing arrow button in green)
-  - Compilation might give a warning saying "No hardware SPI pins defined.  All SPI access will default to bitbanged output", this warning can be ignored as far as I know.
 
