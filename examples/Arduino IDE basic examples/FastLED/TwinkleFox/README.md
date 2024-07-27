@@ -1,5 +1,5 @@
 # Arduino IDE Setup
-TLDR; To make this work you need the ESP32S3 Dev Module board and the FastLED Library installed
+TLDR; Follow the [general REAMDE.md](../../README.md), then additionally, you need to have the FastLED Library installed.
 
 ## Working with the 2024 Fri3d badge in the Arduino IDE
 - First read the [general README.md for the Arduino IDE Examples](../../README.md)
