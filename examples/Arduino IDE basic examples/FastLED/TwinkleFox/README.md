@@ -2,13 +2,13 @@
 TLDR; To make this work you need the ESP32S3 Dev Module board and the FastLED Library installed
 
 ## Working with the 2024 Fried badge in the Arduino IDE
-- First read the general README.md for [Arduino IDE](../../README.md)
+- First read the [general README.md for the Arduino IDE Examples](../../README.md)
 
 ## Arduino IDE Setup Steps
 - From the Library manager in the Arduino IDE, you need to install the FastLED NeoPixel package by Daniel Garcia.
 
 
-### Succesful upload output
+### Succesful upload command output example
 For reference here the output that you get for a succesful compilation and upload (on a mac)
 
 ```
