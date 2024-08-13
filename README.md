@@ -17,7 +17,7 @@ The badge carries an ESP32-S3 chip, so we need to install support for the ESP32 
 * Open **Tools>Board>Board Manager**
 * Search for the `esp32` boards from Espressif Systems and install the version 2.0.14 (remark that the display driver crashes in 2.0.15+ and 3.x.x).
 
-## Uploading firmware using Arduino IDE
+### Uploading firmware using Arduino IDE
 * Under **Tools>Board>...** select **..>ESP32 Arduino>ESP32S3 Dev Module**
 * Under **Tools>USB CDC On Boot>...** select `Enabled` to enable the serial port
 * Under **Tools>Flash Size>...** select `16 MB`
@@ -25,8 +25,11 @@ The badge carries an ESP32-S3 chip, so we need to install support for the ESP32 
 
 * Connect the badge to your computer with a USB-C cable
 * Select the correct USB port under **Tools>Port** (on a Mac it's along the lines of `/dev/cu.usbserial-FFFFFFFF`)
+  * Troubleshooting tip: if you cannot see your board, make sure it's turned on and plugged in with a good usb cable.
 * Compile and upload the code with **Sketch>Upload**
+  *  Troubleshooting tip: If upload fails even though compilation succeeds, then you might need to manually put it in boot mode. To do that, hold the boot button and then press the reset button, then after a second you can release the boot button. 
 * Change and mix the examples and have fun!
+
 
 ## PlatformIO settings
 
