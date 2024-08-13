@@ -15,7 +15,7 @@ The badge carries an ESP32-S3 chip, so we need to install support for the ESP32 
 * In your Arduino IDE, open **File>Preferences**
 * Enter `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json` into the “Additional Board Manager URLs” field 
 * Open **Tools>Board>Board Manager**
-* Search for the `esp32` boards from Espressif Systems and install the version 2.0.14 (remark that the display driver crashes in 2.15, 2.16, ???).
+* Search for the `esp32` boards from Espressif Systems and install the version 2.0.14 (remark that the display driver crashes in 2.0.15+ and 3.x.x).
 
 ## Uploading firmware using Arduino IDE
 * Under **Tools>Board>...** select **..>ESP32 Arduino>ESP32S3 Dev Module**
