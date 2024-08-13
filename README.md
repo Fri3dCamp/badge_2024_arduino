@@ -24,6 +24,7 @@ The badge carries an ESP32-S3 with some peripherals and custom pin settings. In 
 
 ### Arduino IDE examples
 * After you have selected the Fri3d Badge 2024 board, you should also find a `Fri3d Badge 2024` section under **File>Examples**
+* Code for these examples can also be found under [arduino-ide-board-package/libraries/Fri3dBadge2024/examples](./arduino-ide-board-package/libraries/Fri3dBadge2024/examples)
 
 ### Uploading firmware using Arduino IDE
 * Connect the badge to your computer with a USB-C cable
