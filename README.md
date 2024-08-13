@@ -19,6 +19,12 @@ The badge carries an ESP32-S3 with some peripherals and custom pin settings. In 
 #### Alternative option: using official espressif esp32 boards package
 * If you for some reason want to use the [official espressif esp32 boards package](https://espressif.github.io/arduino-esp32) instead of our modified package, then follow the instructions in [README_arduino_esp32_espressif.md](./README_arduino_esp32_espressif.md).
 
+### Selecting the Fri3d Badge under boards
+* If you have successfully installed the library, then you should now be able to select the `Fri3d Badge 2024 (ESP32-S3-WROOM-1)` board under **Tools>Board>fri3d-esp32**
+
+### Arduino IDE examples
+* After you have selected the Fri3d Badge 2024 board, you should also find a `Fri3d Badge 2024` section under **File>Examples**
+
 ### Uploading firmware using Arduino IDE
 * Connect the badge to your computer with a USB-C cable
 * Select the correct USB port under **Tools>Port** (on a Mac it's along the lines of `/dev/cu.usbserial-FFFFFFFF`)
@@ -26,6 +32,7 @@ The badge carries an ESP32-S3 with some peripherals and custom pin settings. In 
 * Compile and upload the code with **Sketch>Upload**
   *  Troubleshooting tip: If upload fails even though compilation succeeds, then you might need to manually put it in boot mode. To do that, hold the boot button and then press the reset button, then after a second you can release the boot button. 
 * Change and mix the examples and have fun!
+
 
 
 ## PlatformIO settings
