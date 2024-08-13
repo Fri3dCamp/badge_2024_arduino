@@ -8,21 +8,18 @@ If you prefer Python over C++, check out the [MicroPython repository](https://gi
 
 ## Arduino IDE Settings
 
-The badge carries an ESP32-S3 chip, so we need to install support for the ESP32 boards.
+The badge carries an ESP32-S3 with some peripherals and custom pin settings. In order to work easily with the board in Arduino IDE, you should install the esp32-fri3d board package.
 
-### Add ESP32-S3 board to your Arduino IDE
-
-* In your Arduino IDE, open **File>Preferences**
-* Enter `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json` into the “Additional Board Manager URLs” field 
+### Installing the custom esp32-fri3d board package
+* In your Arduino IDE, open **File>Preferences** or **Settings**
+* Enter `https://github.com/Fri3dCamp/badge_2024_arduino/releases/latest/download/package_fri3d-esp32_index.json` into the “Additional Board Manager URLs” field
 * Open **Tools>Board>Board Manager**
-* Search for the `esp32` boards from Espressif Systems and install the version 2.0.14 (remark that the display driver crashes in 2.0.15+ and 3.x.x).
+* Search for the `fri3d-esp32` boards manager from Fri3d Vzw and install the latest version.
+
+#### Alternative option: using official espressif esp32 boards package
+* If you for some reason want to use the [official espressif esp32 boards package](https://espressif.github.io/arduino-esp32) instead of our modified package, then follow the instructions in [README_arduino_esp32_espressif.md](./README_arduino_esp32_espressif.md).
 
 ### Uploading firmware using Arduino IDE
-* Under **Tools>Board>...** select **..>ESP32 Arduino>ESP32S3 Dev Module**
-* Under **Tools>USB CDC On Boot>...** select `Enabled` to enable the serial port
-* Under **Tools>Flash Size>...** select `16 MB`
-* Under **Tools>PSRAM>...** select `OPI PSRAM`
-
 * Connect the badge to your computer with a USB-C cable
 * Select the correct USB port under **Tools>Port** (on a Mac it's along the lines of `/dev/cu.usbserial-FFFFFFFF`)
   * Troubleshooting tip: if you cannot see your board, make sure it's turned on and plugged in with a good usb cable.

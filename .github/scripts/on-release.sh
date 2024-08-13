@@ -1,12 +1,12 @@
 #!/bin/bash
 if [ -z "$GITHUB_WORKSPACE" ]; then
     export GITHUB_WORKSPACE="$PWD"
-    export GITHUB_REPOSITORY="francisduvivier/arduino-esp32-fri3d"
+    export GITHUB_REPOSITORY="Fri3dCamp/badge_2024_arduino"
     export GITHUB_EVENT_NAME="release"
     export GITHUB_EVENT_PATH="$GITHUB_WORKSPACE/.github/test-release-published-event.json"
 fi
 
-export MODS_DIR="$GITHUB_WORKSPACE/arduino-esp32-mods"
+export MODS_DIR="$GITHUB_WORKSPACE/arduino-ide-board-package"
 
 # Clone espressif/arduino-esp32 repo tag 2.0.14 as submodule
 UPSTREAM_VERSION=2.0.14
@@ -55,9 +55,9 @@ RELEASE_ID=`echo $EVENT_JSON | jq -r '.release.id'`
 RELEASE_BODY=`echo $EVENT_JSON | jq -r '.release.body'`
 
 OUTPUT_DIR="$BASE_DIR/build"
-PACKAGE_NAME="esp32-fri3d-$RELEASE_TAG"
+PACKAGE_NAME="fri3d-esp32-$RELEASE_TAG"
 PACKAGE_JSON_MERGE=".github/scripts/merge_packages.py"
-PACKAGE_JSON_TEMPLATE="$BASE_DIR/package/package_fri3d_index.template.json"
+PACKAGE_JSON_TEMPLATE="$BASE_DIR/package/package_fri3d-esp32_index.template.json"
 PACKAGE_JSON_DEV="package_fri3d_dev_index.json"
 PACKAGE_JSON_REL="package_fri3d_index.json"
 
@@ -314,100 +314,4 @@ if [ "$RELEASE_PRE" == "false" ]; then
     echo
 fi
 
-##
-## RELEASE NOTES
-##
-
-# Create release notes
-echo "Preparing release notes ..."
-releaseNotes=""
-
-# Process annotated tags
-relNotesRaw=`git -C "$BASE_DIR" show -s --format=%b $RELEASE_TAG`
-readarray -t msgArray <<<"$relNotesRaw"
-arrLen=${#msgArray[@]}
-if [ $arrLen > 3 ] && [ "${msgArray[0]:0:3}" == "tag" ]; then
-    ind=3
-    while [ $ind -lt $arrLen ]; do
-        if [ $ind -eq 3 ]; then
-            releaseNotes="#### ${msgArray[ind]}"
-            releaseNotes+=$'\r\n'
-        else
-            oneLine="$(echo -e "${msgArray[ind]}" | sed -e 's/^[[:space:]]*//')"
-            if [ ${#oneLine} -gt 0 ]; then
-                if [[ "${oneLine:0:2}" == "* " ]]; then oneLine=$(echo ${oneLine/\*/-}); fi
-                if [[ "${oneLine:0:2}" != "- " ]]; then releaseNotes+="- "; fi
-                releaseNotes+="$oneLine"
-                releaseNotes+=$'\r\n'
-            fi
-        fi
-        let ind=$ind+1
-    done
-fi
-
-# Append Commit Messages
-echo
-echo "Previous Branch Release: $prev_branch_release"
-echo "Previous Branch (any)release: $prev_branch_any_release"
-echo
-commitFile="$OUTPUT_DIR/commits.txt"
-COMMITS_SINCE_RELEASE="$prev_branch_any_release"
-if [[ "$RELEASE_PRE" == "false" ]]; then
-    COMMITS_SINCE_RELEASE="$prev_branch_release"
-fi
-if [ ! -z "$COMMITS_SINCE_RELEASE" ] && [[ "$COMMITS_SINCE_RELEASE" != "null" ]]; then
-    echo "Getting commits since $COMMITS_SINCE_RELEASE ..."
-    git -C "$BASE_DIR" log --oneline -n 500 "$COMMITS_SINCE_RELEASE..HEAD" > "$commitFile"
-elif [[ "$RELEASE_BRANCH" != "master" ]]; then
-    echo "Getting all commits on branch '$RELEASE_BRANCH' ..."
-    git -C "$BASE_DIR" log --oneline -n 500 --cherry-pick --left-only --no-merges HEAD...origin/master > "$commitFile"
-else
-    echo "Getting all commits on master ..."
-    git -C "$BASE_DIR" log --oneline -n 500 --no-merges > "$commitFile"
-fi
-releaseNotes+=$'\r\n##### Commits\r\n'
-IFS=$'\n'
-for next in `cat $commitFile`
-do
-    IFS=' ' read -r commitId commitMsg <<< "$next"
-    commitLine="- [$commitId](https://github.com/$GITHUB_REPOSITORY/commit/$commitId) $commitMsg"
-    releaseNotes+="$commitLine"
-    releaseNotes+=$'\r\n'
-done
-rm -f $commitFile
-
-# Prepend the original release body
-if [[ "${RELEASE_BODY: -1}" == $'\r' ]]; then
-    RELEASE_BODY="${RELEASE_BODY:0:-1}"
-else
-    RELEASE_BODY="$RELEASE_BODY"
-fi
-RELEASE_BODY+=$'\r\n'
-releaseNotes="$RELEASE_BODY$releaseNotes"
-
-# Update release page
-echo "Updating release notes ..."
-releaseNotes=$(printf '%s' "$releaseNotes" | python -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
-releaseNotes=${releaseNotes:1:-1}
-curlData="{\"body\": \"$releaseNotes\"}"
-releaseData=`curl --data "$curlData" "https://api.github.com/repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID?access_token=$GITHUB_TOKEN" 2>/dev/null`
-if [ $? -ne 0 ]; then echo "ERROR: Updating Release Failed: $?"; exit 1; fi
-echo "Release notes successfully updated"
-echo
-
-##
-## SUBMODULE VERSIONS
-##
-
-# Upload submodules versions
-echo "Generating submodules.txt ..."
-git -C "$BASE_DIR" submodule status > "$OUTPUT_DIR/submodules.txt"
-echo "Uploading submodules.txt ..."
-echo "Download URL: "`git_safe_upload_asset "$OUTPUT_DIR/submodules.txt"`
-echo ""
-set +e
-
-##
-## DONE
-##
 echo "DONE!"

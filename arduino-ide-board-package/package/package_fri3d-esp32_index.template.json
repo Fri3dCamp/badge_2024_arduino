@@ -1,16 +1,16 @@
 {
   "packages": [
     {
-      "name": "Fri3dBadge",
-      "maintainer": "Fri3d Camp",
-      "websiteURL": "https://github.com/Fri3dCamp/Badge2020_arduino",
+      "name": "fri3d-esp32",
+      "maintainer": "Fri3d Vzw",
+      "websiteURL": "https://github.com/Fri3dCamp/badge_2024_arduino",
       "email": "info@fri3d.be",
       "help": {
         "online": "https://fri3d.be/badge"
       },
       "platforms": [
         {
-          "name": "Fri3dBadge",
+          "name": "fri3d-esp32",
           "architecture": "esp32",
           "version": "",
           "category": "ESP32",
