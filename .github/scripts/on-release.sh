@@ -11,7 +11,7 @@ export MODS_DIR="$GITHUB_WORKSPACE/arduino-ide-board-package"
 # Clone espressif/arduino-esp32 repo tag 2.0.14 as submodule
 UPSTREAM_VERSION=2.0.14
 echo "###### Start Downloading arduino-esp32-$UPSTREAM_VERSION.zip from https://github.com/espressif/arduino-esp32/archive/refs/tags/$UPSTREAM_VERSION.tar.gz"
-wget -O "arduino-esp32-$UPSTREAM_VERSION.zip" "https://github.com/espressif/arduino-esp32/archive/refs/tags/$UPSTREAM_VERSION.tar.gz"
+wget -q -O "arduino-esp32-$UPSTREAM_VERSION.zip" "https://github.com/espressif/arduino-esp32/archive/refs/tags/$UPSTREAM_VERSION.tar.gz"
 echo "###### extracting arduino-esp32-$UPSTREAM_VERSION.zip"
 tar -xzf arduino-esp32-$UPSTREAM_VERSION.zip
 export UPSTREAM_DIR="$GITHUB_WORKSPACE/arduino-esp32-$UPSTREAM_VERSION"
