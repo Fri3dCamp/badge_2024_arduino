@@ -32,7 +32,7 @@ enum{
 #define NUMLEDPIXELS 5
 CRGB leds[NUMLEDPIXELS];
 
-IRrecv irrecv(PIN_IR, 1024, 50, true);
+IRrecv irrecv(PIN_IR_RECEIVER, 1024, 50, true);
 decode_results results;  // Somewhere to store the results
 
 TFT_eSPI tft = TFT_eSPI();
@@ -54,16 +54,16 @@ TFT_eSprite battery_sprite = TFT_eSprite(&tft);
 #define BATTERY_SPRITE_HEIGHT 36
 
 Fri3d_Button *buttons[NUM_BUTTONS]={
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,      39,25,INPUT_PULLUP,true),  // BUTTON_ID_A
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,      40,25,INPUT_PULLUP,true),  // BUTTON_ID_B
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,      38,25,INPUT_PULLUP,true),  // BUTTON_ID_X
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,      41,25,INPUT_PULLUP,true),  // BUTTON_ID_Y
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,      45,25,INPUT_PULLUP,true),  // BUTTON_ID_MENU
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,       0,25,INPUT,       true),  // BUTTON_ID_START, GPIO0 has fixed hardware pullup
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_HIGH, 3, 0,INPUT,       false), // BUTTON_ID_UP
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_LOW,  3, 0,INPUT,       false), // BUTTON_ID_DOWN
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_LOW,  1, 0,INPUT,       false), // BUTTON_ID_LEFT
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_HIGH, 1, 0,INPUT,       false), // BUTTON_ID_RIGHT
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,PIN_A,    25,INPUT_PULLUP,true),  // BUTTON_ID_A
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,PIN_B,    25,INPUT_PULLUP,true),  // BUTTON_ID_B
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,PIN_X,    25,INPUT_PULLUP,true),  // BUTTON_ID_X
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,PIN_Y,    25,INPUT_PULLUP,true),  // BUTTON_ID_Y
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,PIN_MENU, 25,INPUT_PULLUP,true),  // BUTTON_ID_MENU
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_DIGITAL,PIN_START,25,INPUT,       true),  // BUTTON_ID_START, GPIO0 has fixed hardware pullup
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_HIGH,PIN_JOY_Y, 0,INPUT,       false), // BUTTON_ID_UP
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_LOW, PIN_JOY_Y, 0,INPUT,       false), // BUTTON_ID_DOWN
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_LOW, PIN_JOY_X , 0,INPUT,       false), // BUTTON_ID_LEFT
+  new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_HIGH,PIN_JOY_X , 0,INPUT,       false), // BUTTON_ID_RIGHT
 };
 
 Fri3dBadge_Joystick joystick;
@@ -97,12 +97,12 @@ void i2c_scanner() {
 byte error, address;
   int nDevices;
 
-  Wire.begin(PIN_SDA, PIN_SCL);
+  Wire.begin(PIN_I2C_SDA, PIN_I2C_SCL);
   Serial.println("Scanning I2C ...");
   Serial.print("SDA: ");
-  Serial.println(PIN_SDA);
+  Serial.println(PIN_I2C_SDA);
   Serial.print("SCL: ");
-  Serial.println(PIN_SCL);
+  Serial.println(PIN_I2C_SCL);
 
   nDevices = 0;
   for (address = 1; address < 127; address++ )
@@ -141,7 +141,7 @@ void led_rgb_test() {
   static int count=0; 
   int color[3]={25,0,0};
 
-  FastLED.addLeds<WS2812, PIN_RGB, GRB>(leds, NUMLEDPIXELS);  
+  FastLED.addLeds<WS2812, PIN_WS2812, GRB>(leds, NUMLEDPIXELS);  
   for (int i = 0; i < NUMLEDPIXELS; i++) {
     leds[i] = CRGB(color[count%3], color[(count+1)%3], color[(count+2)%3]);
   }
