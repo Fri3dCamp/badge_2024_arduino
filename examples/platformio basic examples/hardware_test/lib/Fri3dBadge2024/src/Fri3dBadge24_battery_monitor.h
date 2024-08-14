@@ -20,7 +20,6 @@ class Battery {
     static uint8_t read_percent();
 
     private:
-    static const uint8_t BATTERY_PIN = 13;
 
     static uint16_t _read_raw();
 };
