@@ -400,3 +400,7 @@ FodyWeavers.xsd
 # Mac OS
 .DS_Store
 
+# Arduino board package build files
+arduino-esp32*.zip
+arduino-esp32-2.*
+arduino-esp32-3.*

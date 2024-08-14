@@ -4,13 +4,12 @@
 #include "FastLED.h"
 
 
-#define NUM_LEDS        5
-#define LED_TYPE   WS2812
-#define COLOR_ORDER   GRB
-#define DATA_PIN       12
-//#define CLK_PIN       4
-#define VOLTS           5
-#define MAX_MA        100
+#define NUM_LEDS 5
+#define LED_TYPE WS2812
+#define COLOR_ORDER GRB
+#define DATA_PIN X_WS2812_LED
+#define VOLTS 5
+#define MAX_MA 100
 
 //  TwinkleFOX: Twinkling 'holiday' lights that fade in and out.
 //  Colors are chosen from a palette; a few palettes are provided.

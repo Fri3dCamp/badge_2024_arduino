@@ -8,7 +8,7 @@ TLDR; Follow the [general REAMDE.md](../../README.md), then additionally, you ne
 - From the Library manager in the Arduino IDE, you need to install the FastLED NeoPixel package by Daniel Garcia.
 
 
-### Succesful upload command output example
+### Successful upload command output example
 For reference here the output that you get for a succesful compilation and upload (on a mac)
 As you can see, the compilation gives a warning saying `"No hardware SPI pins defined.  All SPI access will default to bitbanged output"`, this warning can be ignored as far as I know.
 ```

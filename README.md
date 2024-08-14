@@ -8,25 +8,33 @@ If you prefer Python over C++, check out the [MicroPython repository](https://gi
 
 ## Arduino IDE Settings
 
-The badge carries an ESP32-S3 chip, so we need to install support for the ESP32 boards.
+The badge carries an ESP32-S3 with some peripherals and custom pin settings. In order to work easily with the board in Arduino IDE, you should install the esp32-fri3d board package.
 
-### Add ESP32-S3 board to your Arduino IDE
-
-* In your Arduino IDE, open **File>Preferences**
-* Enter `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json` into the “Additional Board Manager URLs” field 
+### Installing the custom esp32-fri3d board package
+* In your Arduino IDE, open **File>Preferences** or **Settings**
+* Enter `https://github.com/Fri3dCamp/badge_2024_arduino/releases/latest/download/package_fri3d-esp32_index.json` into the “Additional Board Manager URLs” field
 * Open **Tools>Board>Board Manager**
-* Search for the `esp32` boards from Espressif Systems and install the version 2.0.14 (remark that the display driver crashes in 2.15, 2.16, ???).
+* Search for the `fri3d-esp32` boards manager from Fri3d Vzw and install the latest version.
 
-## Uploading firmware using Arduino IDE
-* Under **Tools>Board>...** select **..>ESP32 Arduino>ESP32S3 Dev Module**
-* Under **Tools>USB CDC On Boot>...** select `Enabled` to enable the serial port
-* Under **Tools>Flash Size>...** select `16 MB`
-* Under **Tools>PSRAM>...** select `OPI PSRAM`
+#### Alternative option: using official espressif esp32 boards package
+* If you for some reason want to use the [official espressif esp32 boards package](https://espressif.github.io/arduino-esp32) instead of our modified package, then follow the instructions in [README_arduino_esp32_espressif.md](./README_arduino_esp32_espressif.md).
 
+### Selecting the Fri3d Badge under boards
+* If you have successfully installed the library, then you should now be able to select the `Fri3d Badge 2024 (ESP32-S3-WROOM-1)` board under **Tools>Board>fri3d-esp32**
+
+### Arduino IDE examples
+* After you have selected the Fri3d Badge 2024 board, you should also find a `Fri3d Badge 2024` section under **File>Examples**
+* Code for these examples can also be found under [arduino-ide-board-package/libraries/Fri3dBadge2024/examples](./arduino-ide-board-package/libraries/Fri3dBadge2024/examples)
+
+### Uploading firmware using Arduino IDE
 * Connect the badge to your computer with a USB-C cable
 * Select the correct USB port under **Tools>Port** (on a Mac it's along the lines of `/dev/cu.usbserial-FFFFFFFF`)
+  * Troubleshooting tip: if you cannot see your board, make sure it's turned on and plugged in with a good usb cable.
 * Compile and upload the code with **Sketch>Upload**
+  *  Troubleshooting tip: If upload fails even though compilation succeeds, then you might need to manually put it in boot mode. To do that, hold the boot button and then press the reset button, then after a second you can release the boot button. 
 * Change and mix the examples and have fun!
+
+
 
 ## PlatformIO settings
 
