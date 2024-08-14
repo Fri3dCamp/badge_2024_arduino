@@ -36,7 +36,7 @@ uint16_t Battery::_read_raw(){
     uint16_t max_raw=0;
     for (int count=0; count<5; ++count)
     {
-        uint16_t meas_raw= analogRead(BATTERY_PIN);
+        uint16_t meas_raw= analogRead(PIN_BATTERY);
         max_raw=max(max_raw,meas_raw);
     }
     return max_raw;
