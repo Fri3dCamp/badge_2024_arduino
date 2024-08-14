@@ -292,7 +292,7 @@ void init_sd()
   SPIClass& spix = SPI;  // Create a class variable to hold the SPI class instance (default instance is SPI port 0 pins only)
   spix = tft.getSPIinstance(); // Set to instance used by TFT library (may be SPI port 0 or 1)
 
-  if (!SD.begin(TFCARD_CS_PIN, spix, SPI_FREQUENCY)) {
+  if (!SD.begin(PIN_SDCARD_CS, spix, SPI_FREQUENCY)) {
     Serial.println("Initialisatie van SD-kaart mislukt!");
   }
   else 
