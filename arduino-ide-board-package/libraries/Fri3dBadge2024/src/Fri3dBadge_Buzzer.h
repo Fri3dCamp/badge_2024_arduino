@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Fri3dBadge_pins.h"
-
 // library interface description
 class Fri3dBadge_Buzzer {
 public:

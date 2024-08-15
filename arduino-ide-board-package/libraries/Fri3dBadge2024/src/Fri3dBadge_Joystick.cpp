@@ -1,5 +1,4 @@
 #include "Fri3dBadge_Joystick.h"
-#include "Fri3dBadge_pins.h"
 
 Fri3dBadge_Joystick::Fri3dBadge_Joystick()
 {
@@ -9,7 +8,7 @@ Fri3dBadge_Joystick::Fri3dBadge_Joystick()
     centery = analogRead(PIN_JOY_Y)-2048;
 }
 
-void 
+void
 Fri3dBadge_Joystick::getXY(int *x,int *y) {
   *x = analogRead(PIN_JOY_X)-2048;
   *y = analogRead(PIN_JOY_Y)-2048;

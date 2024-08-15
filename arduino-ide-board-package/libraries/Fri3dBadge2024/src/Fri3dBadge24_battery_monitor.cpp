@@ -1,6 +1,5 @@
 #include "Arduino.h"
 #include "Fri3dBadge24_battery_monitor.h"
-#include "Fri3dBadge_pins.h"
 
 uint16_t Battery::m_raw_min = 1400; //1375 measured min
 uint16_t Battery::m_raw_max = 2330; //2364 measured max while charging, 2342 max after charging
