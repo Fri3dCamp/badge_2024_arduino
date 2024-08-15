@@ -14,8 +14,6 @@
 static const uint8_t LED_BUILTIN = 21;
 #define BUILTIN_LED  LED_BUILTIN // backward compatibility
 #define LED_BUILTIN LED_BUILTIN
-#define RGB_BUILTIN LED_BUILTIN
-#define RGB_BRIGHTNESS 64
 
 #define analogInputToDigitalPin(p)  (((p)<20)?(analogChannelToDigitalPin(p)):-1)
 #define digitalPinToInterrupt(p)    (((p)<49)?(p):-1)
@@ -32,32 +30,35 @@ static const uint8_t MOSI  = 6;
 static const uint8_t MISO  = 8;
 static const uint8_t SCK   = 7;
 
-// General Define for use in sketches or lib files
-#define X_FRI3D_BADGE_2024
+#define X_FRI3D_BADGE_2024 // General Define for use in sketches or lib files
+#define X_WS2812_NUM_LEDS 5 // Number of RBG LEDs
 
-// Fri3d Badge 2024 WS2812
-#define X_WS2812_LED 12
+#define PIN_I2C_SDA     SDA
+#define PIN_I2C_SCL     SCL
+#define PIN_WS2812       12
 #define X_WS2812_NUM_LEDS 5
 
-#define X_BATTERY_MONITOR 13
-#define X_BLASTER 10
-#define X_BUZZER 46
-#define X_IR_RECEIVER 11
+#define PIN_LED          21
+#define PIN_IR_RECEIVER  11
+#define PIN_BLASTER      10
+#define PIN_BUZZER       46
+#define PIN_BATTERY      13
 
-// Fri3d Badge 2024 Buttons
-#define X_BUTTON_A 39
-#define X_BUTTON_B 40
-#define X_BUTTON_X 38
-#define X_BUTTON_Y 41
-#define X_BUTTON_MENU 45
-#define X_BUTTON_START 0
+#define PIN_SDCARD_CS    SS
 
-// Fri3d Badge 2024 Joystick
-#define X_JOYSTICK_VERTICAL 3
-#define X_JOYSTICK_HORIZONTAL 1
+#define PIN_JOY_X         1
+#define PIN_JOY_Y         3
 
-// Fri3d Badge 2024 Aux Pwr
-#define X_AUX_PWR 42
+#define PIN_A            39
+#define PIN_B            40
+#define PIN_X            38
+#define PIN_Y            41
+#define PIN_MENU         45
+#define PIN_START         0
+
+#define PIN_AUX          42 // Fri3d Badge 2024 Aux Pwr
+
+#define CHANNEL_BUZZER 0
 
 // Fri3d Badge 2024 Accelero Gyro
 #define X_ACCELERO_GYRO 21
@@ -95,7 +96,6 @@ static const uint8_t SCK   = 7;
 #define LOAD_GFXFF
 #define SMOOTH_FONT
 #define SPI_FREQUENCY 80000000
-
 
 static const uint8_t A0 = 1;
 static const uint8_t A1 = 2;

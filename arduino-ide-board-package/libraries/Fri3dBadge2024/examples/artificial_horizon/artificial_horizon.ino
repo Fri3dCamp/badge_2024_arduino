@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#include "Fri3dBadge_pins.h"
 #include "Fri3dBadge_WSEN_ISDS.h"
 
 Sensor_ISDS sensor;
@@ -29,7 +28,7 @@ void setup() {
   tft.setTextSize(3);
   tft.setTextColor(TFT_CYAN, TFT_BLACK);
   tft.fillScreen(TFT_BLACK);
-  
+
   //Serial.begin(115200);
   Wire.setPins(PIN_I2C_SDA, PIN_I2C_SCL);
   // Initialize the I2C interface
