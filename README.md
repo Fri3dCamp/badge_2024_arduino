@@ -34,7 +34,7 @@ The badge carries an ESP32-S3 with some peripherals and custom pin settings. In 
   *  Troubleshooting tip: If upload fails even though compilation succeeds, then you might need to manually put it in boot mode. To do that, hold the boot button and then press the reset button, then after a second you can release the boot button. 
 * Change and mix the examples and have fun!
 
-#### Opening the flashed sketch
+#### Starting your sketch
 * For sketches to work, you need to have the main firmware installed.
   * If you don't, see https://fri3dcamp.github.io/badge_2024/reset/#web-interface for more info about that.
 * Then, in the main firmware launcher menu on the badge, select "MicroPython".
@@ -44,7 +44,8 @@ The badge carries an ESP32-S3 with some peripherals and custom pin settings. In 
 #### Running sketches without main firmware
 * When you are using our fri3d-esp32 boards manager package, esp_tool will be configured to only write to the micropython partition (at address 0x410000).
   * The main firmware then needs to direct the esp32 to start from that partition.
-* If you want to overwrite the main firmware instead, then choose **Sketch/Upload Using Programmer** in the Arduino IDE
+* If you want to overwrite the main firmware instead, then follow choose **Sketch>Upload Using Programmer** in the Arduino IDE.
+  * The first time, you also need to select the **EspTool** option via **Tools>Programmer** in the Arduino IDE.
   * If you do this, you will later have to install the main firmware again yourself.
 
 
