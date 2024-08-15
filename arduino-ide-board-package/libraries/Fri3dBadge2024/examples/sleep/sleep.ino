@@ -13,7 +13,7 @@ void fri3d_sleep()
   esp_sleep_enable_ext1_wakeup(PIN_BITMASK_BUTTON_START, ESP_EXT1_WAKEUP_ANY_LOW); // alternative: esp_sleep_enable_ext0_wakeup(GPIO_NUM_0,LOW);
   pinMode(PIN_PWR_AUX,OUTPUT); 
   digitalWrite(PIN_PWR_AUX,LOW);
-  gpio_hold_en(PIN_PWR_AUX);
+  gpio_hold_en((gpio_num_t)PIN_PWR_AUX);
   gpio_deep_sleep_hold_en();
   delay(100);
   esp_deep_sleep_start();
@@ -22,7 +22,7 @@ void fri3d_sleep()
 void setup()
 {
   // PIN PWR AUX (42) was kept low during sleep, but after wake up it should return to its default state HIGH
-  gpio_hold_dis(PIN_PWR_AUX);
+  gpio_hold_dis((gpio_num_t)PIN_PWR_AUX);
   gpio_deep_sleep_hold_dis();
 
   // put your setup code here, to run once:
