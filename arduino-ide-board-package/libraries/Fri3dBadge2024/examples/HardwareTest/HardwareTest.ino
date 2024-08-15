@@ -8,7 +8,6 @@
 #include <SD.h>
 
 #include "Fri3dBadge_Buzzer.h"
-#include "Fri3dBadge_pins.h"
 #include "Fri3dBadge_Joystick.h"
 #include "Fri3dBadge_Button.h"
 #include "Fri3dBadge_WSEN_ISDS.h"

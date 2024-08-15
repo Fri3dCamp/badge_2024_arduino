@@ -1,6 +1,6 @@
 #include <Fri3dBadge_Adafruit_ST7789.h>
 
-Fri3dBadge_Adafruit_ST7789::Fri3dBadge_Adafruit_ST7789() : Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST)
+Fri3dBadge_Adafruit_ST7789::Fri3dBadge_Adafruit_ST7789() : Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST)
 {
 
 }
@@ -20,3 +20,4 @@ void Fri3dBadge_Adafruit_ST7789::init()
       uint8_t madctl = ST77XX_MADCTL_MV | ST77XX_MADCTL_BGR; // Fix Mirroring & Blue vs White
       this->sendCommand(ST77XX_MADCTL, &madctl, 1);
 }
+
