@@ -251,3 +251,5 @@ fri3d_2024_esp32s3.menu.EraseFlash.all=Enabled
 fri3d_2024_esp32s3.menu.EraseFlash.all.upload.erase_cmd=-e
 
 ##############################################################
+
+### TODO Fri3d Badge 2020 ESP32-WROVER-E
