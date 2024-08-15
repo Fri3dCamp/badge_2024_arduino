@@ -32,6 +32,9 @@ static const uint8_t MOSI  = 6;
 static const uint8_t MISO  = 8;
 static const uint8_t SCK   = 7;
 
+// General Define for use in sketches or lib files
+#define X_FRI3D_BADGE_2024
+
 // Fri3d Badge 2024 LCD
 #define X_BOARD_HAS_SPI_LCD
 #define X_LCD_MODEL   ST7789
@@ -68,6 +71,37 @@ static const uint8_t SCK   = 7;
 
 // Fri3d Badge 2024 Accelero Gyro
 #define X_ACCELERO_GYRO 21
+
+// I2S microphone on communicator addon
+#define I2S_MIC_CHANNEL I2S_CHANNEL_FMT_ONLY_LEFT
+#define I2S_MIC_SERIAL_CLOCK 17 //serial clock SCLK: pin SCK
+#define I2S_MIC_LEFT_RIGHT_CLOCK 47 //left/right clock LRCK: pin WS
+#define I2S_MIC_SERIAL_DATA 15 //serial data DIN: pin SD
+
+// For using display with TFT_eSPI library
+#define USER_SETUP_LOADED // TODO check if this is really needed
+#define ST7789_DRIVER
+#define USE_HSPI_PORT
+#define TFT_RGB_ORDER TFT_BGR //# swap red and blue byte order
+#define TFT_INVERSION_OFF
+#define TFT_WIDTH X_LCD_WIDTH  //;setting these will init the eSPI lib with correct dimensions
+#define TFT_HEIGHT X_LCD_HEIGHT //;setting these will init the eSPI lib with correct dimensions
+#define TFT_MISO X_LCD_MISO
+#define TFT_MOSI X_LCD_MOSI
+#define TFT_SCLK X_LCD_CLK
+#define TFT_CS X_LCD_CS
+#define TFT_DC X_LCD_DC
+#define TFT_RST X_LCD_RST
+#define LOAD_GLCD 1
+#define LOAD_FONT2
+#define LOAD_FONT4
+#define LOAD_FONT6
+#define LOAD_FONT7
+#define LOAD_FONT8
+#define LOAD_GFXFF
+#define SMOOTH_FONT
+#define SPI_FREQUENCY 80000000
+
 
 static const uint8_t A0 = 1;
 static const uint8_t A1 = 2;
