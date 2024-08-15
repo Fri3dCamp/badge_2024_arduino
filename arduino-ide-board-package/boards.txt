@@ -73,7 +73,7 @@ fri3d_2024_esp32s3.build.partitions=default
 fri3d_2024_esp32s3.build.defines=
 fri3d_2024_esp32s3.build.loop_core=
 fri3d_2024_esp32s3.build.event_core=
-fri3d_2024_esp32s3.build.psram_type=qspi
+fri3d_2024_esp32s3.build.psram_type=opi
 fri3d_2024_esp32s3.build.memory_type={build.boot}_{build.psram_type}
 
 ## IDE 2.0 Seems to not update the value
@@ -95,10 +95,6 @@ fri3d_2024_esp32s3.menu.PSRAM.default.build.psram_type=opi
 fri3d_2024_esp32s3.menu.PSRAM.disabled=Disabled
 fri3d_2024_esp32s3.menu.PSRAM.disabled.build.defines=
 fri3d_2024_esp32s3.menu.PSRAM.disabled.build.psram_type=qspi
-fri3d_2024_esp32s3.menu.PSRAM.enabled=QSPI PSRAM
-fri3d_2024_esp32s3.menu.PSRAM.enabled.build.defines=-DBOARD_HAS_PSRAM
-fri3d_2024_esp32s3.menu.PSRAM.enabled.build.psram_type=qspi
-
 
 fri3d_2024_esp32s3.menu.FlashMode.qio=QIO 80MHz
 fri3d_2024_esp32s3.menu.FlashMode.qio.build.flash_mode=dio
@@ -123,12 +119,6 @@ fri3d_2024_esp32s3.menu.FlashMode.opi.build.flash_freq=80m
 
 fri3d_2024_esp32s3.menu.FlashSize.default=16MB (128Mb)
 fri3d_2024_esp32s3.menu.FlashSize.default.build.flash_size=16MB
-fri3d_2024_esp32s3.menu.FlashSize.4M=4MB (32Mb)
-fri3d_2024_esp32s3.menu.FlashSize.4M.build.flash_size=4MB
-fri3d_2024_esp32s3.menu.FlashSize.8M=8MB (64Mb)
-fri3d_2024_esp32s3.menu.FlashSize.8M.build.flash_size=8MB
-fri3d_2024_esp32s3.menu.FlashSize.8M.build.partitions=default_8MB
-
 
 fri3d_2024_esp32s3.menu.LoopCore.1=Core 1
 fri3d_2024_esp32s3.menu.LoopCore.1.build.loop_core=-DARDUINO_RUNNING_CORE=1
@@ -202,7 +192,7 @@ fri3d_2024_esp32s3.menu.PartitionScheme.app3M_fat9M_16MB.build.partitions=app3M_
 fri3d_2024_esp32s3.menu.PartitionScheme.app3M_fat9M_16MB.upload.maximum_size=3145728
 fri3d_2024_esp32s3.menu.PartitionScheme.rainmaker=RainMaker
 fri3d_2024_esp32s3.menu.PartitionScheme.rainmaker.build.partitions=rainmaker
-fri3d_2024_esp32s3.menu.PartitionScheme.rainmaker.upload.maximum_size=3145728
+fri3d_2024_esp32s3.menu.PartitionScheme.rainmaker.upload.maximum_size=1966080
 
 fri3d_2024_esp32s3.menu.CPUFreq.240=240MHz (WiFi)
 fri3d_2024_esp32s3.menu.CPUFreq.240.build.f_cpu=240000000L
