@@ -35,20 +35,10 @@ static const uint8_t SCK   = 7;
 // General Define for use in sketches or lib files
 #define X_FRI3D_BADGE_2024
 
-// Fri3d Badge 2024 LCD
-#define X_BOARD_HAS_SPI_LCD
-#define X_LCD_MODEL   ST7789
-#define X_LCD_WIDTH	  240
-#define X_LCD_HEIGHT  296
-#define X_LCD_MISO    MISO
-#define X_LCD_DC      4
-#define X_LCD_CS      5
-#define X_LCD_CLK     SCK // SCLK
-#define X_LCD_MOSI    MOSI
-#define X_LCD_RST     48 // used to reset LCD, low level to reset.
-
 // Fri3d Badge 2024 WS2812
 #define X_WS2812_LED 12
+#define X_WS2812_NUM_LEDS 5
+
 #define X_BATTERY_MONITOR 13
 #define X_BLASTER 10
 #define X_BUZZER 46
@@ -78,20 +68,24 @@ static const uint8_t SCK   = 7;
 #define I2S_MIC_LEFT_RIGHT_CLOCK 47 //left/right clock LRCK: pin WS
 #define I2S_MIC_SERIAL_DATA 15 //serial data DIN: pin SD
 
+
+// Fri3d Badge 2024 LCD
 // For using display with TFT_eSPI library
 #define USER_SETUP_LOADED // TODO check if this is really needed
+#define SPI_FREQUENCY  80000000
 #define ST7789_DRIVER
 #define USE_HSPI_PORT
+
 #define TFT_RGB_ORDER TFT_BGR //# swap red and blue byte order
 #define TFT_INVERSION_OFF
-#define TFT_WIDTH X_LCD_WIDTH  //;setting these will init the eSPI lib with correct dimensions
-#define TFT_HEIGHT X_LCD_HEIGHT //;setting these will init the eSPI lib with correct dimensions
-#define TFT_MISO X_LCD_MISO
-#define TFT_MOSI X_LCD_MOSI
-#define TFT_SCLK X_LCD_CLK
-#define TFT_CS X_LCD_CS
-#define TFT_DC X_LCD_DC
-#define TFT_RST X_LCD_RST
+#define TFT_WIDTH 296  //;setting these will init the eSPI lib with correct dimensions
+#define TFT_HEIGHT 240 //;setting these will init the eSPI lib with correct dimensions
+#define TFT_MISO MISO
+#define TFT_MOSI MOSI
+#define TFT_SCLK SCK
+#define TFT_CS 5
+#define TFT_DC 4
+#define TFT_RST 48
 #define LOAD_GLCD 1
 #define LOAD_FONT2
 #define LOAD_FONT4

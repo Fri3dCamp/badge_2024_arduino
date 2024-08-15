@@ -1,6 +1,6 @@
 #include <Fri3dBadge_Adafruit_ST7789.h>
 
-Fri3dBadge_Adafruit_ST7789::Fri3dBadge_Adafruit_ST7789() : Adafruit_ST7789(X_LCD_CS, X_LCD_DC, X_LCD_MOSI, X_LCD_CLK, X_LCD_RST)
+Fri3dBadge_Adafruit_ST7789::Fri3dBadge_Adafruit_ST7789() : Adafruit_ST7789(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST)
 {
 
 }
@@ -8,7 +8,7 @@ Fri3dBadge_Adafruit_ST7789::Fri3dBadge_Adafruit_ST7789() : Adafruit_ST7789(X_LCD
 void Fri3dBadge_Adafruit_ST7789::init()
 {
     // Call the parent class's begin method to initialize the display
-    Adafruit_ST7789::init(X_LCD_WIDTH, X_LCD_HEIGHT);
+    Adafruit_ST7789::init(TFT_HEIGHT, TFT_WIDTH);
       this->setSPISpeed(80000000);
 
       this->sendCommand(ST77XX_INVOFF); // Fix Black vs white
