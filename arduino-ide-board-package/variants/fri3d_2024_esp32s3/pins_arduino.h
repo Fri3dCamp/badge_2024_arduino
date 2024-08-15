@@ -4,6 +4,9 @@
 #include <stdint.h>
 #include "soc/soc_caps.h"
 
+#undef CONFIG_APP_ROLLBACK_ENABLE // Disable this because otherwise cancel_rollback will be added to the arduino programs
+#undef CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE
+
 #define USB_VID 0x303a
 #define USB_PID 0x1001
 
