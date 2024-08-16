@@ -1,3 +1,8 @@
+// Following libraries need to be installed next to the Fri3d board:
+// - TFT_eSPI e.g. 2.5.43
+// - FastLED e.g. 3.7.0
+// - IRremoteESP8266 e.g. 2.8.6
+
 #include <Arduino.h>
 #include "Fri3dBadge_pins.h"
 #include <TFT_eSPI.h>
