@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "Fri3dBadge_pins.h"
 #include <TFT_eSPI.h>
 #include <Wire.h>
 #include <SPI.h>

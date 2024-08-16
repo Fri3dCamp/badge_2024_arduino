@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "Fri3dBadge_pins.h"
 #include <SPI.h>
 #include <SD.h>
 
