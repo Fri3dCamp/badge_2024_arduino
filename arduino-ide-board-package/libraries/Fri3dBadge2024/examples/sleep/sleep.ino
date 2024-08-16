@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "Fri3dBadge_pins.h"
-#include <TFT_eSPI.h>
+#include <TFT_eSPI.h> // Library Dependency: `TFT_eSPI` by Bodmer v2.5.43
 
 TFT_eSPI    tft = TFT_eSPI();
 

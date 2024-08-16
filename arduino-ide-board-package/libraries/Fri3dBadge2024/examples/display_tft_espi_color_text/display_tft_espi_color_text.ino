@@ -10,7 +10,7 @@
 // Color depth has to be 16 bits if DMA is used to render image
 #define COLOR_DEPTH 16
 
-#include <TFT_eSPI.h>
+#include <TFT_eSPI.h> // Library Dependency: `TFT_eSPI` by Bodmer v2.5.43
 TFT_eSPI    tft = TFT_eSPI();
 
 void setup() {

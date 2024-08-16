@@ -2,7 +2,7 @@
 #include <driver/i2s.h>
 
 // ESP8266Audio version 1.9.7
-#include "AudioFileSourcePROGMEM.h"
+#include "AudioFileSourcePROGMEM.h" // Library Dependency: ESP8266Audio by Earle F. Philhower, III v1.9.7
 #include "AudioGeneratorRTTTL.h"
 #include "AudioOutputI2S.h"
 

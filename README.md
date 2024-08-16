@@ -35,13 +35,7 @@ The badge carries an ESP32-S3 with some peripherals and custom pin settings. In 
 * Change and mix the examples and have fun!
 
 #### Installing Library Dependencies for Arduino Sketches
-To work with peripherals like the display etc on the badge, you need to use libraries.
-Below is a list of a libraries that we use in the examples. These need to be installed for the example sketches to compile.
-- Display library depends on the example:
-  - `TFT_eSPI` by Bodmer
-  - or `Adafruit ST7735 and ST7789 Library` by Adafruit
-- WS2812 LEDs: `FastLED` by Daniel Garcia
-- IR Receiver: `IRremoteESP8266` by David Conran, ...
+To work with peripherals like the display etc. on the badge, you will need install some libraries. The required libraries for an example are always listed at the top of the sketch with `// Library Dependency: ...` comments.
 
 #### Starting your sketch
 * For sketches to work, you need to have the main firmware installed.

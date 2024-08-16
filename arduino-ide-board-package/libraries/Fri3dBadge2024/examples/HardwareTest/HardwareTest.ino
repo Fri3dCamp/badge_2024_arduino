@@ -5,11 +5,11 @@
 
 #include <Arduino.h>
 #include "Fri3dBadge_pins.h"
-#include <TFT_eSPI.h>
+#include <TFT_eSPI.h> // Library Dependency: `TFT_eSPI` by Bodmer v2.5.43
 #include <Wire.h>
 #include <SPI.h>
-#include <FastLED.h>
-#include <IRrecv.h>
+#include <FastLED.h> // Library Dependency: `FastLED` by Daniel Garcia v3.7.1
+#include <IRrecv.h> // Library Dependency: IRremoteESP8266 by by David Conran v2.8.6
 #include <IRac.h>
 #include <SD.h>
 

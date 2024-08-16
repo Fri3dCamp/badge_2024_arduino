@@ -13,7 +13,7 @@
 #include <Arduino.h>
 #include "Fri3dBadge_pins.h"
 #include <assert.h>
-#include <IRrecv.h>
+#include <IRrecv.h> // Library Dependency: IRremoteESP8266 by by David Conran, ... v2.8.6
 #include <IRremoteESP8266.h>
 #include <IRac.h>
 #include <IRtext.h>

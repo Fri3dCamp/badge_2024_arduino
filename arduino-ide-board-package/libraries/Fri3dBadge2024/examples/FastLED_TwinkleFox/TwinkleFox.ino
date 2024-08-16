@@ -1,8 +1,7 @@
 /// @file    TwinkleFox.ino
 /// @brief   Twinkling "holiday" lights that fade in and out.
 /// @example TwinkleFox.ino
-#include "FastLED.h" // Requires FastLED library
-
+#include <FastLED.h> // Library Dependency: `FastLED` by Daniel Garcia v3.7.1
 
 #define NUM_LEDS X_WS2812_NUM_LEDS
 #define LED_TYPE WS2812
