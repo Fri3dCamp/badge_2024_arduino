@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "pins_arduino.h"
+#include "Fri3dBadge_pins.h"
 // Define the width and height according to the TFT and the
 // available memory. The sprites will require:
 //     DWIDTH * DHEIGHT * 2 bytes of RAM

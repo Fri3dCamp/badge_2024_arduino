@@ -7,7 +7,7 @@
 */
 
 #include <Arduino.h>
-#include "pins_arduino.h"
+#include "Fri3dBadge_pins.h"
 #include "Adafruit_TinyUSB.h"
 
 #include "Fri3dBadge_Button.h"
