@@ -1,6 +1,13 @@
 #include <Arduino.h>
 #include <driver/i2s.h>
 
+// ESP8266Audio version 1.9.7
+#include "AudioFileSourcePROGMEM.h"
+#include "AudioGeneratorRTTTL.h"
+#include "AudioOutputI2S.h"
+
+#include "TFT_eSPI.h"
+
 #define PIN_EXPANSION_RX 44
 #define PIN_EXPANSION_TX 43
 
@@ -49,8 +56,6 @@ i2s_pin_config_t i2s_mic_pins = {
   .data_in_num = I2S_MIC_SERIAL_DATA
 };
 
-#include "TFT_eSPI.h"
-
 TFT_eSPI tft = TFT_eSPI();
 
 TFT_eSprite mic_sprite = TFT_eSprite(&tft);
@@ -61,9 +66,6 @@ TFT_eSprite uart_sprite = TFT_eSprite(&tft);
 #define UART_SPRITE_WIDTH 260
 #define UART_SPRITE_HEIGHT 100
 
-#include "AudioFileSourcePROGMEM.h"
-#include "AudioGeneratorRTTTL.h"
-#include "AudioOutputI2S.h"
 
 const char song[] PROGMEM =
   "Beep:d=8,o=5,b=250:g,4a";
