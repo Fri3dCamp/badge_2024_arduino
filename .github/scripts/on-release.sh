@@ -170,8 +170,6 @@ else
     done
 fi
 
-rm  -rf $BASE_DIR/tools/sdk/esp32c3
-rm  -rf $BASE_DIR/tools/sdk/esp32s2
 cp -f  "$BASE_DIR/package.json"                     "$PKG_DIR/"
 cp -f  "$BASE_DIR/programmers.txt"                  "$PKG_DIR/"
 cp -Rf "$BASE_DIR/cores"                            "$PKG_DIR/"
@@ -187,6 +185,8 @@ cp -Rf "$BASE_DIR/tools/ide-debug"                  "$PKG_DIR/tools/"
 cp -Rf "$BASE_DIR/tools/sdk"                        "$PKG_DIR/tools/"
 cp -f $BASE_DIR/tools/platformio-build*.py          "$PKG_DIR/tools/"
 
+rm -rf $PKG_DIR/tools/sdk/esp32c3
+rm -rf $PKG_DIR/tools/sdk/esp32s2
 
 # Remove unnecessary files in the package folder
 echo "Cleaning up folders ..."
