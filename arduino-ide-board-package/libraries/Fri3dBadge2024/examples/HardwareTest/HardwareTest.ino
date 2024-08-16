@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <TFT_eSPI.h>
 #include <Wire.h>
 #include <SPI.h>

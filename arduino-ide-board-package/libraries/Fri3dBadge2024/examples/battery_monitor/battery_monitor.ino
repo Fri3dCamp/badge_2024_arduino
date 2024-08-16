@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <TFT_eSPI.h>
 
 TFT_eSPI    tft = TFT_eSPI();
@@ -24,7 +25,7 @@ uint16_t bat_raw;
 uint8_t bat_percent;
 
 void loop() {
-  
+
   bat_raw = Battery::read_raw();
   Serial.print("Battery raw value: ");
   Serial.println(bat_raw);
