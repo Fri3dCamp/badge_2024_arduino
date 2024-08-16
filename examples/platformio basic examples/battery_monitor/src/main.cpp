@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 // Define the width and height according to the TFT and the
 // available memory. The sprites will require:
 //     DWIDTH * DHEIGHT * 2 bytes of RAM
@@ -33,7 +34,7 @@ uint16_t bat_raw;
 uint8_t bat_percent;
 
 void loop() {
-  
+
   bat_raw = Battery::read_raw();
   Serial.print("Battery raw value: ");
   Serial.println(bat_raw);

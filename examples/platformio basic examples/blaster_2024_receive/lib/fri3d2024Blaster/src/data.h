@@ -2,6 +2,7 @@
 #ifndef DATA_H
 #define DATA_H
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <vector>
 
 const int ir_bit_lenght = 32;

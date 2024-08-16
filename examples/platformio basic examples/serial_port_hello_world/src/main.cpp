@@ -1,9 +1,10 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 void setup()
 {
   Serial.begin(115200);
-  delay(3000); 
+  delay(3000);
   Serial.println("Hello world");
 }
 

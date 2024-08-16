@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 // This is a hello world example of using the lovyanGFX TFT driver for the display
 
@@ -9,7 +10,7 @@ LGFX tft;
 void setup(void)
 {
   Serial.begin(115200);
-  delay(3000); 
+  delay(3000);
   Serial.println("Hello world - LovyanGFX - Hello World");
 
   tft.init();

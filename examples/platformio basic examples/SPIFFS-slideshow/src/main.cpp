@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include "SPIFFS.h"
 
 #define DWIDTH  296

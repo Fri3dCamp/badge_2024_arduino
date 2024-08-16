@@ -1,12 +1,13 @@
-/* 
+/*
  *  This example let the Fri3d badge 2024 act as a keyboard on USB (USB HID device keyboard)
  *  When compiling in Arduino IDE, make sure to select Tools>USB Mode>USB-OTG (TinyUSB)
  *  This example uses the Adafruit TinyUSB library that can be found in the Arduino IDE or
  *    https://github.com/adafruit/Adafruit_TinyUSB_Arduino
  *  Use Adafruit TinyUSB version 3.1.0 and ESP32 Arduino core 2.0.14
-*/ 
+*/
 
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include "Adafruit_TinyUSB.h"
 
 #include "Fri3d_Button.h"
@@ -57,7 +58,7 @@ Fri3d_Button *buttons[NUM_BUTTONS]={
 const char *button_names[NUM_BUTTONS]={"A","B","X","Y","MENU","START","UP","DOWN","LEFT","RIGHT","T"};
 
 // For keycode definition check out https://github.com/hathach/tinyusb/blob/master/src/class/hid/hid.h
-// QWERTY keyboard style: A B X Y M S (when user has azerty setup ) & cursors & T 
+// QWERTY keyboard style: A B X Y M S (when user has azerty setup ) & cursors & T
 uint8_t hid_keys[NUM_BUTTONS]= {HID_KEY_Q, HID_KEY_B, HID_KEY_X, HID_KEY_Y, HID_KEY_SEMICOLON, HID_KEY_S, HID_KEY_ARROW_UP, HID_KEY_ARROW_DOWN, HID_KEY_ARROW_LEFT, HID_KEY_ARROW_RIGHT,HID_KEY_T};
 
 void checkButton(Fri3d_Button *b,const char *buttonname, uint8_t hidcode) {
@@ -82,7 +83,7 @@ void checkButton(Fri3d_Button *b,const char *buttonname, uint8_t hidcode) {
       // Serial.print(buttonname);
       // Serial.println(" released");
       while ( ! usb_hid.ready() ) {
-        delay(1);  
+        delay(1);
       }
       usb_hid.keyboardRelease(0);
     }
@@ -97,17 +98,17 @@ void setup()
   usb_hid.setReportDescriptor(desc_hid_report, sizeof(desc_hid_report));
   usb_hid.setStringDescriptor("Fri3d keyboard");
   usb_hid.begin();
-  
+
   // wait until device mounted
   while( !TinyUSBDevice.mounted() ) delay(1);
 
   // Serial.begin(115200);
-  // delay(3000); 
+  // delay(3000);
   // Serial.println("Fri3dbadge USB HID test");
   for (int count=0; count<NUM_BUTTONS; ++count)
   {
     buttons[count]->begin();
-  } 
+  }
 }
 
 void loop()

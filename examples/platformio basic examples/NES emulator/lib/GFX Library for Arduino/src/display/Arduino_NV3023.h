@@ -2,6 +2,7 @@
 #define _ARDUINO_NV3023_H_
 
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <Print.h>
 #include "./Arduino_GFX.h"
 #include "../Arduino_TFT.h"
@@ -61,7 +62,7 @@
 
 static const uint8_t NV3023_init_operations[] = {
     BEGIN_WRITE,
- 
+
     WRITE_C8_D8, 0xFF, 0xA5,
     WRITE_C8_D8, 0x3E, 0x09,
     WRITE_C8_D8, 0x3A, 0x65,
@@ -80,7 +81,7 @@ static const uint8_t NV3023_init_operations[] = {
     WRITE_C8_D8, 0x96, 0x81,
     WRITE_C8_D8, 0xC3, 0x10,
     WRITE_C8_D8, 0xE6, 0x00,
-    WRITE_C8_D8, 0x99, 0x01, 
+    WRITE_C8_D8, 0x99, 0x01,
 
 ////////////////////////gamma_set////////vrp+ v- vrn//////////////////////////////
     WRITE_C8_D8, 0x70, 0x09,
@@ -117,7 +118,7 @@ static const uint8_t NV3023_init_operations[] = {
     WRITE_C8_D8, 0xAF, 0x08,
 
 //////////////////////////////////////////////////////////////////
- 
+
     WRITE_C8_D8, 0xFF, 0x00,
 
     WRITE_COMMAND_8, 0x11,

@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 // --------------------------------------
 // i2c_scanner
@@ -23,7 +24,7 @@ void setup()
   delay(3000);
   Serial.println("I2C Scanner");
 
-  // Wire.begin(); 
+  // Wire.begin();
   Wire.begin(I2C_SDA, I2C_SCL);
 }
 

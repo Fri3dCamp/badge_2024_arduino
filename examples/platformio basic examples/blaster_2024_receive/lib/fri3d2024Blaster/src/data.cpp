@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 #include "data.h"
 
@@ -118,7 +119,7 @@ IrDataPacket _data::readIr() // add overload to bypass command type validation?
         p.set_raw(calculateCRC(p.get_raw()));
         if (p.get_crc() == 0)
         {
-            return p;   
+            return p;
         }
         else
         {

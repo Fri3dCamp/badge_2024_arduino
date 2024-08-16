@@ -6,6 +6,7 @@
 #define _ARDUINO_DATABUS_H_
 
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 #include "YCbCr2RGB.h"
 

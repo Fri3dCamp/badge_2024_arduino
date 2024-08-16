@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <TFT_eSPI.h>
 
 TFT_eSPI    tft = TFT_eSPI();
@@ -11,7 +12,7 @@ TFT_eSPI    tft = TFT_eSPI();
 void fri3d_sleep()
 {
   esp_sleep_enable_ext1_wakeup(PIN_BITMASK_BUTTON_START, ESP_EXT1_WAKEUP_ANY_LOW); // alternative: esp_sleep_enable_ext0_wakeup(GPIO_NUM_0,LOW);
-  pinMode(PIN_PWR_AUX,OUTPUT); 
+  pinMode(PIN_PWR_AUX,OUTPUT);
   digitalWrite(PIN_PWR_AUX,LOW);
   gpio_hold_en(PIN_PWR_AUX);
   gpio_deep_sleep_hold_en();
@@ -33,13 +34,13 @@ void setup()
   tft.fillScreen(TFT_BLACK);
 
   tft.setTextSize(2);
-  tft.setCursor(40,30); 
+  tft.setCursor(40,30);
   tft.println("Going to sleep");
-  tft.setCursor(40,60); 
+  tft.setCursor(40,60);
   tft.println("in 5 seconds");
-  tft.setCursor(40,130); 
+  tft.setCursor(40,130);
   tft.println("Press START or RESET");
-  tft.setCursor(40,160); 
+  tft.setCursor(40,160);
   tft.println("to wake me up");
   delay(5000);
   fri3d_sleep();

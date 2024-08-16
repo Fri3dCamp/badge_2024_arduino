@@ -2,6 +2,7 @@
  * Please check hw_config.h and display.cpp for configuration details
  */
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 #include <esp_wifi.h>
 #include <esp_task_wdt.h>

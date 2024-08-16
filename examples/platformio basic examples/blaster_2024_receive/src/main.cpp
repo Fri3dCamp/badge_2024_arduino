@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 #include <FastLED.h>
 
@@ -41,9 +42,9 @@ void loop()
 
 void handle_ir_packet(IrDataPacket packet)
 {
-    // Serial.printf("handle_ir_packet packet: %u, p.raw: %" PRIu32 ", p.channel: %" PRIu8 ", p.team: %" PRIu8 ", p.action: %" PRIu8 "\n", 
+    // Serial.printf("handle_ir_packet packet: %u, p.raw: %" PRIu32 ", p.channel: %" PRIu8 ", p.team: %" PRIu8 ", p.action: %" PRIu8 "\n",
     // packet, packet.get_raw(), packet.get_channel(), packet.get_team(), packet.get_action());
-    
+
     if (packet.get_raw() != 0 && packet.get_action() == eActionDamage)
     {
         CRGB color = CRGB::Black;

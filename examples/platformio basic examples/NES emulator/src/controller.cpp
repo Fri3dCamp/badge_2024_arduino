@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 #include "hw_config.h"
 

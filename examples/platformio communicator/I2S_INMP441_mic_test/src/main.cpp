@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <driver/i2s.h>
 
 // you shouldn't need to change these settings

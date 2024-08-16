@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 #define SPEAKER_PIN 46
 const int CHANNEL = 0;
@@ -43,7 +44,7 @@ void ESP32WolfWhistle()
     ledcWriteTone(CHANNEL, f);
     delay(10);
   }
-  
+
   ledcWrite(CHANNEL, 0); //silence
   delay(300);
 

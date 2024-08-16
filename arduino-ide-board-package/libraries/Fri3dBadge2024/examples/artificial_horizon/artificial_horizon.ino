@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <Wire.h>
 
 #include "Fri3dBadge_WSEN_ISDS.h"

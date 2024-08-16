@@ -34,6 +34,7 @@
 #include <stdlib.h>
 
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <stdbool.h>
 
 #define WE_SUCCESS 0

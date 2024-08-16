@@ -1,7 +1,8 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <JC_Button.h>          // https://github.com/JChristensen/JC_Button
 
-// Button(pin, debounceTime, pullUpEnable, invert) 
+// Button(pin, debounceTime, pullUpEnable, invert)
 Button button_A(39,25,true,true);
 Button button_B(40,25,true,true);
 Button button_X(38,25,true,true);
@@ -10,17 +11,17 @@ Button button_MENU(45,25,true,true);
 Button button_START(0,25,false,true); // GPIO0 has HW fixed pullup
 
 void setup()
-{  
+{
   Serial.begin(115200);
-  delay(3000); 
+  delay(3000);
   Serial.println("Fri3dbadge Button test");
 
-  button_A.begin();              
-  button_B.begin();              
-  button_X.begin();              
-  button_Y.begin();              
-  button_MENU.begin();              
-  button_START.begin();              
+  button_A.begin();
+  button_B.begin();
+  button_X.begin();
+  button_Y.begin();
+  button_MENU.begin();
+  button_START.begin();
 }
 
 void checkButton(Button *b,const char *buttonname) {

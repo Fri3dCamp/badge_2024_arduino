@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 #include "blaster_link.hpp"
 
@@ -9,7 +10,7 @@ BlasterLink blasterLink = BlasterLink(blaster_link_pin);
 void setup() {
   Serial.begin(115200);
   delay(3000);
- 
+
   blasterLink.start_listen();
 
   // set the blaster to silent (mute=true)
@@ -39,7 +40,7 @@ void loop() {
     blasterLink.set_team(TeamColor(team));
     team++;
     if (team >= 7) team = 0; // only 8 TeamColor defined
-    
+
     last_millis = millis();
   }
 

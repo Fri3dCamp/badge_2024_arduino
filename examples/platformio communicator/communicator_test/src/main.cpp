@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <driver/i2s.h>
 
 #define PIN_EXPANSION_RX 44

@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include "pins2024.h"
 
 #include <Wire.h>
@@ -28,7 +29,7 @@ void setup() {
   tft.setTextSize(3);
   tft.setTextColor(TFT_CYAN, TFT_BLACK);
   tft.fillScreen(TFT_BLACK);
-  
+
   //Serial.begin(115200);
   Wire.setPins(PIN_I2C_SDA, PIN_I2C_SCL);
   // Initialize the I2C interface

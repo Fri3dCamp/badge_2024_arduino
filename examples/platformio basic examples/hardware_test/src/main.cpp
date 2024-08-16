@@ -1,10 +1,11 @@
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <TFT_eSPI.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <FastLED.h>
 #include <IRrecv.h>
-#include <IRac.h> 
+#include <IRac.h>
 #include <SD.h>
 
 #include "Fri3dBadge_Buzzer.h"
@@ -74,7 +75,7 @@ void buttons_init()
   for (int count=0; count<NUM_BUTTONS; ++count)
   {
     buttons[count]->begin();
-  } 
+  }
 }
 
 void buttons_update()
@@ -138,10 +139,10 @@ byte error, address;
 }
 
 void led_rgb_test() {
-  static int count=0; 
+  static int count=0;
   int color[3]={25,0,0};
 
-  FastLED.addLeds<WS2812, PIN_WS2812, GRB>(leds, NUMLEDPIXELS);  
+  FastLED.addLeds<WS2812, PIN_WS2812, GRB>(leds, NUMLEDPIXELS);
   for (int i = 0; i < NUMLEDPIXELS; i++) {
     leds[i] = CRGB(color[count%3], color[(count+1)%3], color[(count+2)%3]);
   }
@@ -192,7 +193,7 @@ void buttonshow(int buttonid)
   int w=0;
   uint32_t col;
   const char *buttonname="";
-  
+
   switch(buttonid)
   {
     case BUTTON_ID_MENU:
@@ -278,7 +279,7 @@ void button_check(int buttonid)
 }
 
 void button_loop()
-{  
+{
   button_check(BUTTON_ID_MENU);
   button_check(BUTTON_ID_START);
   button_check(BUTTON_ID_A);
@@ -295,12 +296,12 @@ void init_sd()
   if (!SD.begin(PIN_SDCARD_CS, spix, SPI_FREQUENCY)) {
     Serial.println("Initialisatie van SD-kaart mislukt!");
   }
-  else 
+  else
   {
      Serial.println("Initialisatie SD-kaart klaar.");
      // hier mag geen tft commando
      status_sd=1;
-  } 
+  }
 }
 
 void show_sd()
@@ -330,7 +331,7 @@ void joystick_show()
 
   joystick_sprite.fillSprite(TFT_BLACK);
   joystick.getXY(&x,&y);
-  // TODO map gebruiken 
+  // TODO map gebruiken
   int newx = radius + (x+2048) * maxx / 4096;
   int newy = JOYSTICK_SPRITE_HEIGHT - ((y+2048) * maxy / 4096 + radius);
   joystick_sprite.drawRect(0,0,JOYSTICK_SPRITE_WIDTH, JOYSTICK_SPRITE_HEIGHT,TFT_WHITE );
@@ -434,7 +435,7 @@ void setup()
   // Serial.print("My IDF Version is: ");
   // Serial.println(esp_get_idf_version());
 
-  buttons_init(); 
+  buttons_init();
   buzzer_test();
   i2c_scanner();
   led_rgb_test();

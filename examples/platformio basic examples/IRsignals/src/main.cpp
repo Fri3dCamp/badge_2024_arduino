@@ -1,16 +1,17 @@
 /*
- * 
+ *
  * This example dumps details of received IR codes.
  * The example uses library IRremoteESP8266 which can be found in the Arduino IDE or on
  *    https://github.com/crankyoldgit/IRremoteESP8266
  *
- * Based on IRremoteESP8266: IRrecvDumpV2 
+ * Based on IRremoteESP8266: IRrecvDumpV2
  * Copyright 2009 Ken Shirriff, http://arcfn.com
  * Copyright 2017-2019 David Conran
  *
  */
 
 #include <Arduino.h>
+#include "pins_arduino.h"
 #include <assert.h>
 #include <IRrecv.h>
 #include <IRremoteESP8266.h>
