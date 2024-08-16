@@ -36,8 +36,8 @@ static const uint8_t SCK   = 7;
 #define X_FRI3D_BADGE_2024 // General Define for use in sketches or lib files
 #define X_WS2812_NUM_LEDS 5 // Number of RBG LEDs
 
-#define PIN_I2C_SDA     SDA
-#define PIN_I2C_SCL     SCL
+#define PIN_I2C_SDA     9
+#define PIN_I2C_SCL     18
 #define PIN_WS2812       12
 #define X_WS2812_NUM_LEDS 5
 
@@ -47,7 +47,7 @@ static const uint8_t SCK   = 7;
 #define PIN_BUZZER       46
 #define PIN_BATTERY      13
 
-#define PIN_SDCARD_CS    SS
+#define PIN_SDCARD_CS    14
 
 #define PIN_JOY_X         1
 #define PIN_JOY_Y         3

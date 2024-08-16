@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Arduino.h>
-#include "pins_arduino.h"
 
 #define JOYSTICK_MAXVALUE 2048
 
