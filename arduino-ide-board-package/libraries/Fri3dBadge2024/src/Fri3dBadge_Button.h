@@ -1,4 +1,3 @@
-
 #ifndef FRI3DBADGE_BUTTON_H_INCLUDED
 #define FRI3DBADGE_BUTTON_H_INCLUDED
 
@@ -31,7 +30,13 @@ class Fri3d_Button
         // puEnable true to enable the AVR internal pullup resistor (default true)
         // invert   true to interpret a low logic level as pressed (default true)
         Fri3d_Button(Fri3DButton_type buttontype, uint8_t pin, uint32_t dbTime=25, uint8_t mode=INPUT_PULLUP, uint8_t invert=true)
-            : m_buttontype(buttontype), m_pin(pin), m_dbTime(dbTime), m_mode(mode), m_invert(invert) {}
+		{
+			m_buttontype = buttontype;
+			m_pin = pin;
+			m_dbTime = dbTime;
+			m_mode = mode;
+			m_invert = invert;
+		}
 
         // Initialize a Button object
         void begin();
