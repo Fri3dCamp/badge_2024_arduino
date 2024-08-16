@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "pins_arduino.h"
+#include "Fri3dBadge_pins.h"
 #include <TFT_eSPI.h>
 
 TFT_eSPI    tft = TFT_eSPI();

@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "pins_arduino.h"
+#include "Fri3dBadge_pins.h"
 
 #define SPEAKER_PIN 46
 const int CHANNEL = 0;

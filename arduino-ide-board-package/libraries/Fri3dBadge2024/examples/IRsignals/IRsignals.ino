@@ -11,7 +11,7 @@
  */
 
 #include <Arduino.h>
-#include "pins_arduino.h"
+#include "Fri3dBadge_pins.h"
 #include <assert.h>
 #include <IRrecv.h>
 #include <IRremoteESP8266.h>
