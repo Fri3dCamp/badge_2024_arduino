@@ -1,22 +1,6 @@
 #include <Arduino.h>
-#include "Fri3dBadge_pins.h"
 
 #define SPEAKER_PIN 46
-const int CHANNEL = 0;
-
-void ArduinoCuckoo();
-void ESP32WolfWhistle();
-
-void setup() {
-}
-
-void loop() {
-  //ArduinoCuckoo();
-  //delay(random(1000, 30000));
-
-  ESP32WolfWhistle();
-  delay(random(1000, 30000));
-}
 
 void ArduinoCuckoo()
 {
@@ -32,31 +16,11 @@ void ArduinoCuckoo()
   delay(2000);
 }
 
-//this only works for ESP32 in Arduino-compatible mode:
-void ESP32WolfWhistle()
-{
-  ledcSetup( CHANNEL, 3000, 8 );
-  ledcWrite( CHANNEL, 0 ); //volume on channel 0 to 0
-  ledcAttachPin(SPEAKER_PIN, CHANNEL); //link speaker pin to channel 0
+void setup() {
+  pinMode(SPEAKER_PIN, OUTPUT);
+}
 
-  ledcWrite(CHANNEL, 50); //volume 50%
-  for (int f=500; f<1400; f+=50) {
-    ledcWriteTone(CHANNEL, f);
-    delay(10);
-  }
-
-  ledcWrite(CHANNEL, 0); //silence
-  delay(300);
-
-  ledcWrite(CHANNEL, 50); //volume 50%
-  for (int f=500; f<1400; f+=50) {
-    ledcWriteTone(CHANNEL, f);
-    delay(10);
-  }
-  for (int f=1400; f>500; f-=50) {
-    ledcWriteTone(CHANNEL, f);
-    delay(10);
-  }
-
-  ledcWrite(CHANNEL, 0); //silence
+void loop() {
+  ArduinoCuckoo();
+  delay(1000);
 }
