@@ -60,8 +60,8 @@ void loop() {
 
 void cross(uint32_t color)
 {
-  tft.drawWideLine(0, 0, LCD_WIDTH, LCD_HEIGHT, 5, color, TFT_BLACK);
-  tft.drawWideLine(0, LCD_HEIGHT, LCD_WIDTH, 0, 5, color, TFT_BLACK);
+  tft.drawWideLine(0, 0, TFT_WIDTH, TFT_HEIGHT, 5, color, TFT_BLACK);
+  tft.drawWideLine(0, TFT_HEIGHT, TFT_WIDTH, 0, 5, color, TFT_BLACK);
 }
 
 //if erase==true, we will draw line in black to erase it
@@ -78,7 +78,7 @@ void horizon(bool erase)
   double angle_radians = sign * (cosangle < 0? 2*PI - acos(-cosangle): acos(cosangle));
   //given the angle, calculate #pixels we need to deviate from middle to draw our horizon:
   //once the angle goes over 45, this doesn't work and we should actually calculate xdiff
-  float ydiff = sin(angle_radians) * LCD_WIDTH/2.0;
+  float ydiff = sin(angle_radians) * TFT_WIDTH/2.0;
 
   //Serial.printf("%5d, %5d, %5d,     ", acc_X, acc_Y, acc_Z);
   //Serial.printf("%7.2f, %7.2f, %4.3f, %4.0f", mag_vector, cosangle, angle, ydiff);
@@ -86,7 +86,7 @@ void horizon(bool erase)
 
   tft.setCursor(70, 50); //top middle of screen
   tft.printf(" %5.2f ", -180.0 / PI * angle_radians); //display angle, converted to degrees
-  tft.drawWideLine(0, LCD_HEIGHT/2+ydiff, LCD_WIDTH, LCD_HEIGHT/2-ydiff, 5, defcolor, TFT_BLACK);
+  tft.drawWideLine(0, TFT_HEIGHT/2+ydiff, TFT_WIDTH, TFT_HEIGHT/2-ydiff, 5, defcolor, TFT_BLACK);
 }
 
 double dotprod(int16_t x1, int16_t  y1, int16_t x2, int16_t y2)
