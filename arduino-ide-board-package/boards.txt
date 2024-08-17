@@ -157,6 +157,8 @@ fri3d_2024_esp32s3.menu.UploadMode.cdc=USB-OTG CDC (TinyUSB)
 fri3d_2024_esp32s3.menu.UploadMode.cdc.upload.use_1200bps_touch=true
 fri3d_2024_esp32s3.menu.UploadMode.cdc.upload.wait_for_upload_port=true
 
+fri3d_2024_esp32s3.menu.PartitionScheme.fri3d=Fri3d 16MB (OTA + Micropyhton + Retrogame)
+fri3d_2024_esp32s3.menu.PartitionScheme.fri3d.build.partitions=fri3d_partitions_16MB
 fri3d_2024_esp32s3.menu.PartitionScheme.default=Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)
 fri3d_2024_esp32s3.menu.PartitionScheme.default.build.partitions=default
 fri3d_2024_esp32s3.menu.PartitionScheme.defaultffat=Default 4MB with ffat (1.2MB APP/1.5MB FATFS)

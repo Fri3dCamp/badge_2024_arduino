@@ -1,0 +1,12 @@
+# Name,             Type,   SubType,    Offset,     Size,       Flags
+# bootloader.bin,   ,       ,           0x1000,     32K,
+# partition table,  ,       ,           0x8000,     4K,
+otadata,            data,   ota,        0x9000,     0x2000,
+nvs,                data,   nvs,        0xb000,     0x5000,
+ota_0,              app,    ota_0,      0x10000,    0x200000,
+ota_1,              app,    ota_1,      0x210000,   0x200000,
+micropython,        app,    ota_2,      0x410000,   0x300000,
+launcher,           app,    ota_3,      0x710000,   0x100000,
+retro-core,         app,    ota_4,      0x810000,   0x0a0000,
+prboom-go,          app,    ota_5,      0x8b0000,   0x0e0000,
+vfs,                data,   fat,        0x990000,   0x670000,
