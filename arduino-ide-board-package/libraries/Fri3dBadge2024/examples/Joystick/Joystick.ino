@@ -22,7 +22,6 @@ void setup()
   Serial.begin(115200);
   tft.init(TFT_BLACK);
   tft.initDMA();
-  tft.setRotation(3);
   tft.writecommand(TFT_MADCTL);
   tft.writedata(TFT_MAD_BGR | TFT_MAD_MV); //exchange red and blue bytes, and mirror x-coordinates
   tft.fillScreen(TFT_BLACK);
