@@ -34,7 +34,7 @@ TFT_eSprite face = TFT_eSprite(&tft);
 
 #define CLOCK_FG   TFT_SKYBLUE
 #define CLOCK_BG   TFT_NAVY
-#define SECCOND_FG TFT_RED
+#define SECOND_FG  TFT_RED
 #define LABEL_FG   TFT_GOLD
 
 #define CLOCK_R       230.0f / 2.0f // Clock face radius (float type)
@@ -172,7 +172,7 @@ static void renderFace(float t) {
 
   // Draw second hand
   getCoord(SCREEN_W_CENTER, CLOCK_R, &xp, &yp, S_HAND_LENGTH, s_angle);
-  face.drawWedgeLine(SCREEN_W_CENTER, CLOCK_R, xp, yp, 2.5, 1.0, SECCOND_FG);
+  face.drawWedgeLine(SCREEN_W_CENTER, CLOCK_R, xp, yp, 2.5, 1.0, SECOND_FG);
   face.pushSprite(5, 5, TFT_TRANSPARENT);
 }
 
