@@ -1,6 +1,8 @@
 /*
    Spawns pictures of cats on the TFT with rainbow LEDs
    Press start to start spawning cats, or use ABXY to manually spawn
+
+   Need to install libraries: FastLED, PNGdec and TFT_eSPI 
 */
 
 #include "Fri3dBadge_pins.h"
