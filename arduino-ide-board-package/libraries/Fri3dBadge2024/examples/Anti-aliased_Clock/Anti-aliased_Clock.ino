@@ -22,6 +22,10 @@
 #include <TFT_eSPI.h> // Master copy here: https://github.com/Bodmer/TFT_eSPI
 #include <SPI.h>
 
+// Time h:m:s
+uint8_t h = 0, m = 0, s = 0;
+float time_secs = h * 3600 + m * 60 + s;
+
 #include "NotoSansBold15.h"
 // Load header after time_secs global variable has been created so it is in scope
 #include "NTP_Time.h" // Attached to this sketch, see that tab for library needs
@@ -55,10 +59,6 @@ TFT_eSprite face = TFT_eSprite(&tft);
 #define FACE_W CLOCK_R * 2 + 1 + 56
 #define FACE_H CLOCK_R * 2 + 1
 
-// Time h:m:s
-uint8_t h = 0, m = 0, s = 0;
-
-float time_secs = h * 3600 + m * 60 + s;
 
 
 // Time for next tick
