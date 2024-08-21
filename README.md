@@ -57,7 +57,7 @@ To work with peripherals like the display etc. on the badge, you will need insta
 Following settings can be used. Write following lines of code in platformio.ini
 
 ```
-platform = espressif32@^6.3.2
+platform = espressif32@6.6.0
 board = esp32-s3-devkitc-1
 
 ; Configure options for the N16R8V variant
