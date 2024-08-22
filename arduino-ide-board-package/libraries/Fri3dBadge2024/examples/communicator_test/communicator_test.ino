@@ -75,6 +75,12 @@ void uart_sprite_setup()
   uart_sprite.createSprite(UART_SPRITE_WIDTH, UART_SPRITE_HEIGHT);
   uart_sprite.setFreeFont(&FreeMono9pt7b);
   uart_sprite.setTextSize(1);
+  uart_sprite.setCursor(30, 30);
+  uart_sprite.println("Press a key on the");
+  uart_sprite.setCursor(30, 60);
+  uart_sprite.println("communicator");
+  uart_sprite.pushSprite(20, 140);
+  
   Serial2.begin(115200, SERIAL_8N1, PIN_EXPANSION_RX, PIN_EXPANSION_TX);
   Serial2.flush(false); // Flush TX & RX
 }
@@ -132,9 +138,18 @@ void mic_sprite_show()
   size_t bytes_read = 0;
   i2s_read(I2S_NUM_0, raw_samples, sizeof(int32_t) * SAMPLE_BUFFER_SIZE, &bytes_read, portMAX_DELAY);
   int num_samples = bytes_read / sizeof(int32_t);
-  // dump the samples out to the serial channel.
+  if (num_samples < 100)
+    return;
 
-  if (num_samples > 100)
+  boolean micworks = false;
+  for (int count = 0; count < num_samples; ++count)
+  {
+    if (raw_samples[count] != 0)
+    {
+      micworks = true;
+    }
+  }
+  if (micworks)
   {
     const float x_step = (float)MIC_SPRITE_WIDTH / (float)num_samples;
     const float height2 = (float)MIC_SPRITE_HEIGHT / 2;
@@ -156,8 +171,15 @@ void mic_sprite_show()
       prev_sample_y = sample_y;
       sample_x += x_step * 4;
     }
-    mic_sprite.pushSprite(40, 30);
   }
+  else
+  {
+    mic_sprite.setCursor(30, 30);
+    mic_sprite.setTextColor(TFT_RED);
+    mic_sprite.setTextSize(2);
+    mic_sprite.println("No microphone");
+  }
+  mic_sprite.pushSprite(40, 30);
 }
 
 void setup_display()
