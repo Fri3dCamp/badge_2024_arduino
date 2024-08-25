@@ -2,7 +2,7 @@
 
 #include <FastLED.h>
 
-#include <data.h>
+#include "Fri3dBadge_Blaster24Data.h"
 
 #define NEOPIXEL_PIN 12
 #define NUM_LEDS 5
