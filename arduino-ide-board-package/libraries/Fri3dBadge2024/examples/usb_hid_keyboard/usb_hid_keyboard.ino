@@ -12,6 +12,9 @@
 
 #include "Fri3dBadge_Button.h"
 
+#define PIN_EXPANSION_RX 44
+#define PIN_EXPANSION_TX 43
+
 // HID report descriptor using TinyUSB's template
 // Single Report (no ID) descriptor
 uint8_t const desc_hid_report[] = {
@@ -109,11 +112,33 @@ void setup()
   {
     buttons[count]->begin();
   }
+
+  // Setup UART connection to communicator
+  Serial2.begin(115200, SERIAL_8N1, PIN_EXPANSION_RX, PIN_EXPANSION_TX);
+  Serial2.flush(false); // Flush TX & RX
+}
+
+void checkcommunicator()
+{
+  unsigned char hidcode[8];
+
+  for (int count = 0; count < 8; ++count)
+  {
+    if (Serial2.available())
+    {
+      hidcode[count] = Serial2.read();
+    }
+    else
+    {
+      return; // only send HID code when 8 bytes have been received
+    }
+  }
+  usb_hid.sendReport(0, hidcode,8);
 }
 
 void loop()
 {
-
+  checkcommunicator();
   for (int count=0; count<NUM_BUTTONS; ++count)
   {
     checkButton(buttons[count],button_names[count],hid_keys[count]);
