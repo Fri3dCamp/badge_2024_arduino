@@ -135,6 +135,7 @@ void checkcommunicator()
   }
   usb_hid.sendReport(0, hidcode,8);
 }
+
 void loop()
 {
   checkcommunicator();
