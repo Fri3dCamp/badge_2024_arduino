@@ -11,6 +11,9 @@
 
 #include "Fri3d_Button.h"
 
+#define PIN_EXPANSION_RX 44
+#define PIN_EXPANSION_TX 43
+
 // HID report descriptor using TinyUSB's template
 // Single Report (no ID) descriptor
 uint8_t const desc_hid_report[] = {
@@ -32,8 +35,6 @@ enum{
   BUTTON_ID_DOWN,
   BUTTON_ID_LEFT,
   BUTTON_ID_RIGHT,
-  BUTTON_ID_TOUCH,
-
 
   NUM_BUTTONS,
 };
@@ -51,14 +52,13 @@ Fri3d_Button *buttons[NUM_BUTTONS]={
   new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_LOW,  3, 0,INPUT,       false), // BUTTON_ID_DOWN
   new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_LOW,  1, 0,INPUT,       false), // BUTTON_ID_LEFT
   new Fri3d_Button (FRI3D_BUTTON_TYPE_ANALOGUE_HIGH, 1, 0,INPUT,       false), // BUTTON_ID_RIGHT
-  new Fri3d_Button (FRI3D_BUTTON_TYPE_TOUCH,         2,25,INPUT,       false), // BUTTON_ID_TOUCH, touch sensor on pin 2 of connector
 };
 
-const char *button_names[NUM_BUTTONS]={"A","B","X","Y","MENU","START","UP","DOWN","LEFT","RIGHT","T"};
+const char *button_names[NUM_BUTTONS]={"A","B","X","Y","MENU","START","UP","DOWN","LEFT","RIGHT"};
 
 // For keycode definition check out https://github.com/hathach/tinyusb/blob/master/src/class/hid/hid.h
 // QWERTY keyboard style: A B X Y M S (when user has azerty setup ) & cursors & T 
-uint8_t hid_keys[NUM_BUTTONS]= {HID_KEY_Q, HID_KEY_B, HID_KEY_X, HID_KEY_Y, HID_KEY_SEMICOLON, HID_KEY_S, HID_KEY_ARROW_UP, HID_KEY_ARROW_DOWN, HID_KEY_ARROW_LEFT, HID_KEY_ARROW_RIGHT,HID_KEY_T};
+uint8_t hid_keys[NUM_BUTTONS]= {HID_KEY_Q, HID_KEY_B, HID_KEY_X, HID_KEY_Y, HID_KEY_SEMICOLON, HID_KEY_S, HID_KEY_ARROW_UP, HID_KEY_ARROW_DOWN, HID_KEY_ARROW_LEFT, HID_KEY_ARROW_RIGHT};
 
 void checkButton(Fri3d_Button *b,const char *buttonname, uint8_t hidcode) {
 
@@ -108,11 +108,34 @@ void setup()
   {
     buttons[count]->begin();
   } 
+
+  // Setup UART connection to communicator
+  Serial2.begin(115200, SERIAL_8N1, PIN_EXPANSION_RX, PIN_EXPANSION_TX);
+  Serial2.flush(false); // Flush TX & RX
+}
+
+
+void checkcommunicator()
+{
+  unsigned char hidcode[8];
+
+  for (int count = 0; count < 8; ++count)
+  {
+    if (Serial2.available())
+    {
+      hidcode[count] = Serial2.read();
+    }
+    else
+    {
+      return; // only send HID code when 8 bytes have been received
+    }
+  }
+  usb_hid.sendReport(0, hidcode,8);
 }
 
 void loop()
 {
-
+  checkcommunicator();
   for (int count=0; count<NUM_BUTTONS; ++count)
   {
     checkButton(buttons[count],button_names[count],hid_keys[count]);

@@ -1,6 +1,6 @@
+#ifndef FRI3DBADGE_BLASTER24DATA_H
+#define FRI3DBADGE_BLASTER24DATA_H
 
-#ifndef DATA_H
-#define DATA_H
 #include <Arduino.h>
 #include <vector>
 
