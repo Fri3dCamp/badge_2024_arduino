@@ -1,7 +1,7 @@
 // Following libraries need to be installed next to the Fri3d board:
-// - TFT_eSPI e.g. 2.5.43
-// - Time e.g. 1.6.1
-// - Timezone e.g. 1.2.4
+// - TFT_eSPI version 2.5.43 from https://github.com/Bodmer/TFT_eSPI/
+// - Time     version 1.6.1  from https://github.com/PaulStoffregen/Time
+// - Timezone version 1.2.4  from https://github.com/JChristensen/Timezone
 
 // Sketch to draw an analogue clock on the screen
 // This uses anti-aliased drawing functions that are built into TFT_eSPI
