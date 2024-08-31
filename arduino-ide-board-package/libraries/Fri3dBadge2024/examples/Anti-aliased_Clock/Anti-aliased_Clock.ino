@@ -1,7 +1,7 @@
 // Following libraries need to be installed next to the Fri3d board:
-// - TFT_eSPI e.g. 2.5.43
-// - Time e.g. 1.6.1
-// - Timezone e.g. 1.2.4
+// - TFT_eSPI version 2.5.43 from https://github.com/Bodmer/TFT_eSPI/
+// - Time     version 1.6.1  from https://github.com/PaulStoffregen/Time
+// - Timezone version 1.2.4  from https://github.com/JChristensen/Timezone
 
 // Sketch to draw an analogue clock on the screen
 // This uses anti-aliased drawing functions that are built into TFT_eSPI
@@ -18,7 +18,7 @@
 
 
 #include <Arduino.h>
-#define SCREEN_W_CENTER (TFT_WIDTH / 2.0)
+
 #include <TFT_eSPI.h> // Master copy here: https://github.com/Bodmer/TFT_eSPI
 #include <SPI.h>
 
@@ -127,12 +127,13 @@ static void renderFace(float t) {
   float h_angle = t * HOUR_ANGLE;
   float m_angle = t * MINUTE_ANGLE;
   float s_angle = t * SECOND_ANGLE;
+  int screen_w_center = tft.width() / 2;
 
   // The face is completely redrawn - this can be done quickly
   face.fillSprite(TFT_BLACK);
 
   // Draw the face circle
-  face.fillSmoothCircle( SCREEN_W_CENTER, CLOCK_R, CLOCK_R, CLOCK_BG );
+  face.fillSmoothCircle( screen_w_center, CLOCK_R, CLOCK_R, CLOCK_BG );
 
   // Set text datum to middle centre and the colour
   face.setTextDatum(MC_DATUM);
@@ -147,32 +148,32 @@ static void renderFace(float t) {
 
   // Draw digits around clock perimeter
   for (uint32_t h = 1; h <= 12; h++) {
-    getCoord(SCREEN_W_CENTER, CLOCK_R, &xp, &yp, dialOffset, h * 360.0 / 12);
+    getCoord(screen_w_center, CLOCK_R, &xp, &yp, dialOffset, h * 360.0 / 12);
     face.drawNumber(h, xp, 2 + yp);
   }
 
   // Add text (could be digital time...)
   face.setTextColor(LABEL_FG, CLOCK_BG);
-  face.drawString("Fri3d Camp !", SCREEN_W_CENTER, CLOCK_R * 0.75);
+  face.drawString("Fri3d Camp !", screen_w_center, CLOCK_R * 0.75);
   face.setTextColor(TFT_GREEN, CLOCK_BG);
-  face.drawString("Hello World !", SCREEN_W_CENTER, CLOCK_R * 1.25);
+  face.drawString("Hello World !", screen_w_center, CLOCK_R * 1.25);
 
   // Draw minute hand
-  getCoord(SCREEN_W_CENTER, CLOCK_R, &xp, &yp, M_HAND_LENGTH, m_angle);
-  face.drawWideLine(SCREEN_W_CENTER, CLOCK_R, xp, yp, 6.0f, CLOCK_FG);
-  face.drawWideLine(SCREEN_W_CENTER, CLOCK_R, xp, yp, 2.0f, CLOCK_BG);
+  getCoord(screen_w_center, CLOCK_R, &xp, &yp, M_HAND_LENGTH, m_angle);
+  face.drawWideLine(screen_w_center, CLOCK_R, xp, yp, 6.0f, CLOCK_FG);
+  face.drawWideLine(screen_w_center, CLOCK_R, xp, yp, 2.0f, CLOCK_BG);
 
   // Draw hour hand
-  getCoord(SCREEN_W_CENTER, CLOCK_R, &xp, &yp, H_HAND_LENGTH, h_angle);
-  face.drawWideLine(SCREEN_W_CENTER, CLOCK_R, xp, yp, 6.0f, CLOCK_FG);
-  face.drawWideLine(SCREEN_W_CENTER, CLOCK_R, xp, yp, 2.0f, CLOCK_BG);
+  getCoord(screen_w_center, CLOCK_R, &xp, &yp, H_HAND_LENGTH, h_angle);
+  face.drawWideLine(screen_w_center, CLOCK_R, xp, yp, 6.0f, CLOCK_FG);
+  face.drawWideLine(screen_w_center, CLOCK_R, xp, yp, 2.0f, CLOCK_BG);
 
   // Draw the central pivot circle
-  face.fillSmoothCircle(SCREEN_W_CENTER, CLOCK_R, 4, CLOCK_FG);
+  face.fillSmoothCircle(screen_w_center, CLOCK_R, 4, CLOCK_FG);
 
   // Draw second hand
-  getCoord(SCREEN_W_CENTER, CLOCK_R, &xp, &yp, S_HAND_LENGTH, s_angle);
-  face.drawWedgeLine(SCREEN_W_CENTER, CLOCK_R, xp, yp, 2.5, 1.0, SECOND_FG);
+  getCoord(screen_w_center, CLOCK_R, &xp, &yp, S_HAND_LENGTH, s_angle);
+  face.drawWedgeLine(screen_w_center, CLOCK_R, xp, yp, 2.5, 1.0, SECOND_FG);
   face.pushSprite(5, 5, TFT_TRANSPARENT);
 }
 

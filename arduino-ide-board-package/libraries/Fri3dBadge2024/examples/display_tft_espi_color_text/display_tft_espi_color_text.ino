@@ -1,14 +1,5 @@
 #include <Arduino.h>
 #include "Fri3dBadge_pins.h"
-// Define the width and height according to the TFT and the
-// available memory. The sprites will require:
-//     DWIDTH * DHEIGHT * 2 bytes of RAM
-// Note: for a 240 * 320 area this is 150 Kbytes!
-#define DWIDTH  296
-#define DHEIGHT 240
-//#define USE_DMA_TO_TFT
-// Color depth has to be 16 bits if DMA is used to render image
-#define COLOR_DEPTH 16
 
 #include <TFT_eSPI.h> // Library Dependency: `TFT_eSPI` by Bodmer v2.5.43
 TFT_eSPI    tft = TFT_eSPI();
