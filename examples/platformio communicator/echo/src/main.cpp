@@ -7,19 +7,30 @@
 //defines for this specific project:
 #include "echo.h"
 
-int32_t buffer1[2*SAMPLE_BUFFER_SIZE] = {0};
+int8_t buffer1[2*SAMPLE_BUFFER_SIZE] = {0};
 //uint16_t buffer2[SAMPLE_BUFFER_SIZE] = {0};
+
+bool isButtonPressed() {
+  return digitalRead(PIN_A) == LOW;
+}
 
 void setup() {
   Serial.begin(115200);
+  pinMode(PIN_A, INPUT_PULLUP);
   LEDsetup();
 }
 
 void loop() {
-  //Serial.println("recording ...");
+  showBlue();
+  Serial.println("waiting for PIN_A ...");
+  while (!isButtonPressed()) {
+    delay(1); //give schedular a chance to interrupt busy loop
+  }
+
   showRed();
-  record(buffer1);
+  size_t recordedBytes = record(buffer1, isButtonPressed);
+
   //Serial.println("playing ...");
   showGreen();
-  playback(buffer1);
+  playback(buffer1, recordedBytes);
 }

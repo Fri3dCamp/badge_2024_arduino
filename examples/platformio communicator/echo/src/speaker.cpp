@@ -6,8 +6,8 @@
 i2s_config_t i2s_spk = {
     .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
     .sample_rate = SAMPLE_RATE,
-    .bits_per_sample = I2S_BITS_PER_SAMPLE_32BIT, //mike didn't seem to work with 16 bits
-    .channel_format = I2S_CHANNEL_FMT_ONLY_LEFT, //this format seems to equal mike raw format
+    .bits_per_sample = I2S_BITS_PER_SAMPLE_8BIT, //mike didn't seem to work with 16 bits
+    .channel_format = I2S_CHANNEL_FMT_ALL_LEFT, //this format seems to equal mike raw format
 #if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(4, 2, 0)
     .communication_format = (i2s_comm_format_t)(I2S_COMM_FORMAT_STAND_I2S),
 #else
@@ -36,7 +36,7 @@ i2s_pin_config_t i2s_spk_pins = {
     .data_in_num = I2S_PIN_NO_CHANGE
 };
 
-void playback(int32_t *buffer) {
+void playback(int8_t *buffer, size_t length) {
     if (i2s_driver_install(I2S_NUM_0, &i2s_spk, 0, NULL) != ESP_OK)
     {
         Serial.println("ERROR: Unable to install I2S drives\n");
@@ -45,9 +45,9 @@ void playback(int32_t *buffer) {
     i2s_set_pin(I2S_NUM_0, &i2s_spk_pins);
 
     size_t written;
-    i2s_write(I2S_NUM_0, buffer, SAMPLE_BUFFER_SIZE*sizeof(int32_t), &written, portMAX_DELAY);
-    //Serial.print(written);
-    //Serial.println(" bytes written");
+    i2s_write(I2S_NUM_0, buffer, length, &written, portMAX_DELAY);
+    Serial.print(written);
+    Serial.println(" bytes written");
 
     i2s_driver_uninstall(I2S_NUM_0);
 }
