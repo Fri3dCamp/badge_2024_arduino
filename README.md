@@ -74,5 +74,9 @@ build_flags =
     ; necessary for serial port
    -D ARDUINO_USB_CDC_ON_BOOT=1
 ```
+
+### Flashing Behaviour Platform IO
+The platform IO examples will by default be flashed to the micropython partition. This also means that by default, restarting the device will go back to the main menu. To change this, you can change `default_envs` to `fri3dbadge2024_override_main_firmware` in the platformio.ini file. 
+
 ## Gotchas
-* Normally the badge automatically goes into bootloader mode. If it doesn't (you might see the error "The chip needs to be in download mode."), you can do it manually:  *press and hold* the start button, press the reset button, then release the start button. You can do this before uploading the firmware at any moment. After uploading press reset again. In case you have a serial monitor, close and open it again.
+* Normally the badge automatically goes into download mode. If it doesn't (you might see the error "The chip needs to be in download mode."), you can do it manually:  *press and hold* the start button, press the reset button, then release the start button. You can do this before uploading the firmware at any moment. After uploading press reset again. In case you have a serial monitor, close and open it again.
