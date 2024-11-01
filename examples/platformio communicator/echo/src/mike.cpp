@@ -34,28 +34,40 @@ i2s_pin_config_t i2s_mic_pins = {
     .data_out_num = I2S_PIN_NO_CHANGE,
     .data_in_num = I2S_MIC_SERIAL_DATA};
 
-void record(int32_t *buffer) {
+size_t record(int8_t *buffer, bool (*canContinue)()) {
   // start up the I2S peripheral
   if (ESP_OK != i2s_driver_install(I2S_NUM_0, &i2s_mike, 0, NULL))
   {
     Serial.println("i2s_driver_install: error");
-    return;
+    return 0;
   }
   if (ESP_OK != i2s_set_pin(I2S_NUM_0, &i2s_mic_pins))
   {
     Serial.println("i2s_set_pin: error");
-    return;
+    return 0;
   }
 
   size_t read;
-  i2s_read(I2S_NUM_0, buffer, SAMPLE_BUFFER_SIZE*sizeof(int32_t), &read, portMAX_DELAY);
-  Serial.print(read);
-  Serial.println(" bytes read");
+  size_t totalRead = 0;
+  const size_t INCREMENT = 100;
+  int32_t temp[INCREMENT];
 
-  //boost volume
-  for (int i=0; i<SAMPLE_BUFFER_SIZE; ++i) {
-    buffer[i] *= 16;
+  int8_t lowest = 0;
+  int8_t highest = 0;
+  while (totalRead < SAMPLE_BUFFER_SIZE-INCREMENT && canContinue()) {
+    i2s_read(I2S_NUM_0, temp, INCREMENT*sizeof(int32_t), &read, portMAX_DELAY);
+    
+    //copy to actual buffer, and boost volume in the process:
+    for (int i=0; i<read; ++i) {
+      buffer[totalRead + i] = (int8_t) (temp[i] >> 24);
+      if (buffer[totalRead + i] < lowest) lowest = buffer[totalRead +i];
+      if (buffer[totalRead + i] > highest) highest = buffer[totalRead +i];
+    }
+
+    totalRead += (read>>2);
   }
+  Serial.printf(" %u bytes read, lo = %hhd, hi = %hhd \n", totalRead, lowest, highest);
 
   i2s_driver_uninstall(I2S_NUM_0);
+  return totalRead;
 }
